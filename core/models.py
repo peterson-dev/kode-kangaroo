@@ -12,6 +12,8 @@ class User(AbstractUser):
     gender_pronouns = models.CharField(max_length=20, null=True, blank=True)
     date_created = models.DateField(auto_now_add=True, blank=True)
     about = models.TextField(max_length=1000, null=True, blank=True)
+    is_admin = models.BooleanField()
+    is_active = models.BooleanField()
 
 class Language(models.Model):
     '''This model represents the language category'''
@@ -23,6 +25,6 @@ class Snippet(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
     languages = models.ManyToManyField(Language)
     post_content = models.TextField(max_length=5000)
-    slug = AutoSlugField(populate_from=title)
+    # slug = AutoSlugField(populate_from=title)
     created_at = models.DateTimeField(auto_now=True)
-    source_id = models.CharField(null=True)
+    source_id = models.CharField(max_length=10, null=True)
