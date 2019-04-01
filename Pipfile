@@ -1,0 +1,16 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+prospector = "*"
+
+[packages]
+django = "*"
+django-autoslug-field = "*"
+django-registration-redux = "*"
+django-debug-toolbar = "*"
+
+[requires]
+python_version = "3.7"
