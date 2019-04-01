@@ -8,7 +8,6 @@ prospector = "*"
 
 [packages]
 django = "*"
-django-autoslug-field = "*"
 django-registration-redux = "*"
 django-debug-toolbar = "*"
 psycopg2 = "*"
