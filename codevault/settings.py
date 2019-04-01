@@ -47,7 +47,6 @@ INSTALLED_APPS = [
 
     # Third party apps
     'debug_toolbar',
-    'django_autoslug',
 
     # Our Apps
     'core',
