@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from autoslug import AutoSlugField
 
 # Create your models here.
 
@@ -8,7 +7,7 @@ class User(AbstractUser):
     '''This model represents the custom user model'''
     username = models.CharField(max_length=50, unique=True, null=False, blank=False)
     profile_picture = models.ImageField(upload_to='profile_pictures', blank=True)
-    slug = AutoSlugField(populate_from=username)
+    # slug = AutoSlugField(populate_from=username)
     email = models.CharField(max_length=50, null=False, blank=False)
     gender_pronouns = models.CharField(max_length=20, null=True, blank=True)
     date_created = models.DateField(auto_now_add=True, blank=True)
