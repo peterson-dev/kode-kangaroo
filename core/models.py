@@ -26,7 +26,7 @@ class User(AbstractUser):
         '''Creates a unique slug for every post'''
         if self.slug:
             return
-    
+          
     def save(self, *args, **kwargs):
         '''Hides slug field in admin- saves slug to use in url'''
         self.set_slug()
