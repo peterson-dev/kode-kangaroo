@@ -20,8 +20,6 @@ class User(AbstractUser):
     gender_pronouns = models.CharField(max_length=20, null=True, blank=True)
     date_created = models.DateField(auto_now_add=True, blank=True)
     about = models.TextField(max_length=1000, null=True, blank=True)
-    is_admin = models.BooleanField()
-    is_active = models.BooleanField()
     folder = models.ManyToManyField('Folder', related_name='users_folder')
 
     def set_slug(self):
