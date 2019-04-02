@@ -9,7 +9,7 @@ class Folder(models.Model):
     '''This model represents the folder model'''
     title = models.CharField(max_length=35)
     category = models.ManyToManyField('Language', related_name='folder_category')
-    user = models.ManyToManyField('User', related_name='folder_user')
+    user = models.ManyToManyField('User', related_name='user')
 
 class User(AbstractUser):
     '''This model represents the custom user model'''
@@ -20,36 +20,23 @@ class User(AbstractUser):
     gender_pronouns = models.CharField(max_length=20, null=True, blank=True)
     date_created = models.DateField(auto_now_add=True, blank=True)
     about = models.TextField(max_length=1000, null=True, blank=True)
-    is_admin = models.BooleanField()
-    is_active = models.BooleanField()
     folder = models.ManyToManyField('Folder', related_name='users_folder')
 
     def set_slug(self):
         '''Creates a unique slug for every post'''
         if self.slug:
             return
-        base_slug = slugify(self.username)
-
-        slug = base_slug
-        n = 0
-
-        while User.objects.filter(slug=slug).count():
-            n += 1
-            slug = base_slug + '-' + str(n)
-        
-        self.slug = slug
     
     def save(self, *args, **kwargs):
         '''Hides slug field in admin- saves slug to use in url'''
         self.set_slug()
         super().save(*args, **kwargs)
-
+        
     # def get_absolute_url(self):
-    #     return reverse("user_profile", args=[str(self.slug)])
-    
+    #     return reverse('user-profile', kwargs={'slug': self.slug})
+
     def __str__(self):
         return self.username
-
 
 class Language(models.Model):
     '''This model represents the language category'''
