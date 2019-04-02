@@ -8,9 +8,8 @@ from django.urls import reverse
 class Folder(models.Model):
     '''This model represents the folder model'''
     name = models.CharField(max_length=35)
-    language = models.ManyToManyField(Language)
-    user = models.ManyToManyField(User)
-
+    language = models.ManyToManyField('Language')
+    user = models.ManyToManyField('User')
 
 class User(AbstractUser):
     '''This model represents the custom user model'''
@@ -24,7 +23,6 @@ class User(AbstractUser):
     is_admin = models.BooleanField()
     is_active = models.BooleanField()
     folder = models.ManyToManyField(Folder)
-
 
     def set_slug(self):
         '''Creates a unique slug for every post'''
@@ -93,5 +91,3 @@ class Snippet(models.Model):
     
     def __str__(self):
         return self.title
-
-
