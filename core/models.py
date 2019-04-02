@@ -28,7 +28,7 @@ class User(AbstractUser):
         '''Creates a unique slug for every post'''
         if self.slug:
             return
-        base_slug = slugify(self.title)
+        base_slug = slugify(self.username)
 
         slug = base_slug
         n = 0

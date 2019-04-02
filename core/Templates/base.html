@@ -10,8 +10,24 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <header>
+    <nav>
+        <ul>
+            <li>LOGO</li>
+            <li>CodeVault</li>
+            {% if request.user.is_authenticated %}
+            <li><a href="#0">Discover</a></li>
+            <li><a class="" href="{% url 'user_profile' %}" method="POST"
+                title="Profile page">{{ request.user.username }}</a>
+            <span class="">|</span></li>
+            <li><a class="" href="{% url 'auth_logout' %}">Logout</a></li>
+            {% else %}
+            <li><a class="" href="{% url 'auth_login' %}">Register | Login</a></li>
+        </ul>
+    </nav>
 </header>
 <body>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
 </body>
-
 </html>
