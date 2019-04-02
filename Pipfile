@@ -12,7 +12,6 @@ django-registration-redux = "*"
 django-debug-toolbar = "*"
 psycopg2 = "*"
 pillow = "*"
-django-autoslug = "*"
 
 [requires]
 python_version = "3.7"
