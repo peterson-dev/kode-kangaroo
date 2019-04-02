@@ -7,9 +7,9 @@ from django.urls import reverse
 
 class Folder(models.Model):
     '''This model represents the folder model'''
-    name = models.CharField(max_length=35)
-    language = models.ManyToManyField('Language')
-    user = models.ManyToManyField('User')
+    title = models.CharField(max_length=35)
+    category = models.ManyToManyField('Language', related_name='folder_category')
+    user = models.ManyToManyField('User', related_name='folder_user')
 
 class User(AbstractUser):
     '''This model represents the custom user model'''
@@ -22,7 +22,7 @@ class User(AbstractUser):
     about = models.TextField(max_length=1000, null=True, blank=True)
     is_admin = models.BooleanField()
     is_active = models.BooleanField()
-    folder = models.ManyToManyField(Folder)
+    folder = models.ManyToManyField('Folder', related_name='users_folder')
 
     def set_slug(self):
         '''Creates a unique slug for every post'''
@@ -54,17 +54,20 @@ class User(AbstractUser):
 class Language(models.Model):
     '''This model represents the language category'''
     name = models.CharField(max_length=50)
-    folder = models.ManyToManyField(Folder)
+    folder = models.ManyToManyField('Folder')
 
 class Snippet(models.Model):
     '''This model represents the users post'''
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50, null=False, blank=False)
-    languages = models.ManyToManyField(Language)
+    languages = models.ManyToManyField('Language')
     post_content = models.TextField(max_length=5000)
     slug = models.SlugField()
     created_at = models.DateTimeField(auto_now=True)
     source_id = models.CharField(max_length=10, null=True)
+
+    class Meta:
+        ordering = ['-created_at']
 
     def set_slug(self):
         '''Creates a unique slug for every post'''
