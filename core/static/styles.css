@@ -20,8 +20,38 @@
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
     margin-left: 940px;
-    
 }
+
+.button-snippet {
+    background-color: #7EE905;
+    border: none;
+    color: black;
+    padding: 6px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    float: right;
+    margin-right: 1rem;
+}
+
+.snippet-box {
+    margin-left: 2rem;
+    padding: 1rem;
+    width: 400px;
+    height: 400px;
+}
+.snippet-user {
+    margin-top: 0;
+    margin-left: 2rem;
+}
+
+.snippet-title, .snippet-languages, .snippet-created {
+    margin-left: 2rem;
+}
+
+
 
 .font {
     font-family: 'Exo', sans-serif;
