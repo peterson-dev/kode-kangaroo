@@ -11,13 +11,14 @@
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
+{% if request.user.is_authenticated %}
 <header>
     <div class="font">
         <nav class="tracked">
             <ul class="pa3 list pl0 mt0 flex flex-wrap bg-near-black nav_font_color">
+                
                 <li class="nav_font_color pa3 link hover-white dib mr3">LOGO</li>
                 <li> <a class="nav_font_color pa3 link hover-white dib mr3" href="index">CodeVault</a></li>
-                {% if request.user.is_authenticated %}
                 <li><a class="nav_font_color pa3 link hover-white dib mr3" href="#0">Discover</a></li>
                 <li><a class="nav_font_color pt3 pb3 ml0 link hover-white dib mr3" href="{% url 'snippet_list' %}" method="POST"
                     title="Profile page">{{ request.user.username }}</a>
