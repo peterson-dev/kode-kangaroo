@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<div>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <form></form>
+</div>
+
+<div class="mv4" id="">
+    {% for snippet in snippets.all %}
+      {% include "partials/snippet.html" %}
+    {% empty %}
+      <div>No snippets to show.</div>
+    {% endfor %}
+</div>
+
+{% endblock %}
