@@ -12,10 +12,10 @@ class SnippetAdmin(admin.ModelAdmin):
 
 @admin.register(Language)
 class LanguageAdmin(admin.ModelAdmin):
-    list_display = ('name', 'folder')
+    list_display = ('name',)
 
 @admin.register(Folder)
 class FolderAdmin(admin.ModelAdmin):
-    list_display = ('title')
-    exclude = ('category')
+    list_display = ('title',)
+    exclude = ('category',)
 
