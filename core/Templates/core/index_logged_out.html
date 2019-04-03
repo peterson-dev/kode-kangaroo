@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>CodeVault</title>
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css">  
+  <link rel="stylesheet" href="{% static '' %}">
+</head>
+<body class="sans-serif">
+  <div class="bg-pink min-vh-100">
+    <div class="pa4 center mw6 yellow">
+      <div class="tc">      
+        <h1 class="f-headline lh-solid">
+          code vault
+        </h1>
+        <p class="f3">a code snippet manager</p>
+        <p>
+          <a href="{% url 'auth_login' %}">Login</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

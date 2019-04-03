@@ -10,8 +10,17 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <header>
+    <nav>
+        <ul>
+            <li>LOGO</li>
+            <li>CodeVault</li>
+           
+        </ul>
+    </nav>
 </header>
 <body>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
 </body>
-
 </html>
