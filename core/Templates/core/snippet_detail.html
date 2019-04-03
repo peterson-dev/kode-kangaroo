@@ -12,18 +12,19 @@
 
 <div>
     <p class="snippet-box" style="border: 2px solid black">{{snippet.post_content}}</p>
+    <div>
+        {% if request.user.is_authenticated and user == snippet.user %}
+            <button class="button-snippet" type="button" value="Edit Snippet"><a href="">Edit</a></button>
+            <button class="button-snippet" type="button" value="Delete Snippet"><a href="">Delete</a></button>
+        {% else %}
+            <button class="button-snippet" type="button" value="Copy Snippet"><a href="">Copy</a></button>
+        {% endif %}
+    </div>
 </div>
 
 
 <!-- this will be the code used for the buttons once there is data to confirm functionality. The if statement will have to be updated for the logged in user === user who posted snippet. also added link for the button even though we know will be updated to javascript by end of week. -->
-<div>
-    {% if request.user.is_authenticated and user == snippet.user %}
-        <button class="button-snippet" type="button" value="Edit Snippet"><a href="">Edit</a></button>
-        <button class="button-snippet" type="button" value="Delete Snippet"><a href="">Delete</a></button>
-    {% else %}
-        <button class="button-snippet" type="button" value="Copy Snippet"><a href="">Copy</a></button>
-    {% endif %}
-</div>
+
 
 <div class="snippet-languages">
     {% for language in snippet.languages.all %}{{language.name}}  {% if not forloop.last %}{%endif%}{% endfor %}
