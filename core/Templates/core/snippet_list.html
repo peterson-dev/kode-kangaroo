@@ -3,16 +3,25 @@
 
 {% block content %}
 <div>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <form></form>
+    <h1 class="font ml5">Create Code Snippet:</h1>
+    <textarea class="snippet_input"></textarea>
+    <br>
+    <button class="font button dim dib">Save</button>
+    <div class="ml5">
+      <div class="draggable_snippets">
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+        <p>test</p>
+      </div>
+    </div>
+      <form></form>
 </div>
 
-<div class="mv4" id="">
+<div class="mv4">
+<h2 class="font">Saved Snippets</h2>
     {% for snippet in snippets.all %}
       {% include "partials/snippet.html" %}
     {% empty %}
