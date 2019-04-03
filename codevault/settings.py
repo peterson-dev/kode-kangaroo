@@ -147,7 +147,7 @@ INTERNAL_IPS = [
 
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/'
-
+LOGOUT_REDIRECT_URL = '/'
 # Custom user config.
 AUTH_USER_MODEL = 'core.User'
 
