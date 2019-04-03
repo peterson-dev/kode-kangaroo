@@ -20,7 +20,7 @@ class User(AbstractUser):
     gender_pronouns = models.CharField(max_length=20, null=True, blank=True)
     date_created = models.DateField(auto_now_add=True, blank=True)
     about = models.TextField(max_length=1000, null=True, blank=True)
-    folder = models.ManyToManyField('Folder', related_name='users_folder')
+    folder = models.ManyToManyField('Folder', related_name='users_folder', null=True, blank=True)
 
     def set_slug(self):
         '''Creates a unique slug for every post'''
@@ -41,7 +41,7 @@ class User(AbstractUser):
 class Language(models.Model):
     '''This model represents the language category'''
     name = models.CharField(max_length=50)
-    folder = models.ManyToManyField('Folder')
+    folder = models.ManyToManyField('Folder', null=True, blank=True)
 
 class Snippet(models.Model):
     '''This model represents the users post'''
@@ -51,7 +51,8 @@ class Snippet(models.Model):
     post_content = models.TextField(max_length=5000)
     slug = models.SlugField()
     created_at = models.DateTimeField(auto_now=True)
-    source_id = models.CharField(max_length=10, null=True)
+    source_id = models.CharField(max_length=10, null=True, blank=True)
+    public=models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-created_at']
