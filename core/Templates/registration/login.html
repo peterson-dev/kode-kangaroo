@@ -1,0 +1,35 @@
+{% extends "registration/registration_base.html" %}
+
+{% load static %}
+
+{% load i18n %}
+{% block content %}
+
+
+  <div class="bg-black min-vh-100 nav_font_color">
+    <div class="pa4 center mw6">
+      <div class="tc">
+
+        <h1 class="f-headline lh-solid">
+          CodeVault
+        </h1>
+        <p class="white f3">A code snippet manager</p>
+        <form method="post" action="">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <!-- <label for="id_username">Username:</label>
+          <input type="text" name="username" autofocus="" required="" id="id_username">
+          
+          <label for="id_password">Password:</label>
+          <input type="password" name="password" required="" id="id_password"> -->
+
+          <input type="submit" value="{% trans 'Log in' %}" />
+          <input type="hidden" name="next" value="{{ next }}" />
+      </form>
+      
+      <p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
+      <p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}
