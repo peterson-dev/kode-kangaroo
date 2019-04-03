@@ -5,18 +5,28 @@
 <head>
     <title>CodeVault</title>
     <meta charset="utf-8">
+    {% comment %} <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> {% endcomment %}
+    <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
 <header>
-    <nav>
-        <ul>
-            <li>LOGO</li>
-            <li>CodeVault</li>
-           
-        </ul>
-    </nav>
+    <div class="font">
+        <nav class="tracked">
+            <ul class="pa3 list pl0 mt0 flex flex-wrap bg-near-black nav_font_color">
+                <li class="nav_font_color pa3 link hover-white dib mr3">LOGO</li>
+                <li> <a class="nav_font_color pa3 link hover-white dib mr3" href="index">CodeVault</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a class="nav_font_color pa3 link hover-white dib mr3" href="#0">Discover</a></li>
+                <li><a class="nav_font_color pt3 pb3 ml0 link hover-white dib mr3" href="{% url 'snippet_list' %}" method="POST"
+                    title="Profile page">{{ request.user.username }}</a>
+                <span class="link hover-white dib mr3">|</span></li>
+                <li><a class="nav_font_color pt3 pb3 link hover-white dib mr3" href="{% url 'auth_logout' %}">Logout</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
 </header>
 <body>
     <div>
