@@ -1,37 +1,36 @@
 {% extends "base.html" %}
-
 {% load staticfiles %}
 
 {% block content %}
 
 <!--would like to add if statement that if logged in user matches the added by user, the link goes to their profile page, if the user does not match, then go to a lsit view of "public" posts by the added by user or a blank url or dead url.-->
 
-<h2>{{snippet.title}}</h2>
-<h3>Added by: <a href="">{{snippet.user}}</a></h3>
-Added link for the user name to have a link to the userpage which is the same as home.
+<h2 class="snippet-title">{{snippet.title}}</h2>
+<h3 class="snippet-user">Added by: <a href="">{{snippet.user}}</a></h3>
+
 
 
 <div>
-    <p style="border: 2px solid black">{{snippet.post_content}}</p>
+    <p class="snippet-box" style="border: 2px solid black">{{snippet.post_content}}</p>
 </div>
 
 
 <!-- this will be the code used for the buttons once there is data to confirm functionality. The if statement will have to be updated for the logged in user === user who posted snippet. also added link for the button even though we know will be updated to javascript by end of week. -->
 <div>
     {% if request.user.is_authenticated and user == snippet.user %}
-        <button type="button" value="Edit Snippet"><a href="">Edit</a></button>
-        <button type="button" value="Delete Snippet"><a href="">Delete</a></button>
+        <button class="button-snippet" type="button" value="Edit Snippet"><a href="">Edit</a></button>
+        <button class="button-snippet" type="button" value="Delete Snippet"><a href="">Delete</a></button>
     {% else %}
-        <button type="button" value="Copy Snippet"><a href="">Copy</a></button>
+        <button class="button-snippet" type="button" value="Copy Snippet"><a href="">Copy</a></button>
     {% endif %}
 </div>
 
-<div>
-    <h4>{% for language in snippet.languages.all %}{{language.name}}  {% if not forloop.last %}{%endif%}{% endfor %}</h4>
+<div class="snippet-languages">
+    {% for language in snippet.languages.all %}{{language.name}}  {% if not forloop.last %}{%endif%}{% endfor %}
 </div>
 
 <div>
-    <p>Created at: {{snippet.created_at}}</p>
+    <p class="snippet-created">Created at: {{snippet.created_at}}</p>
 </div>
 
 
