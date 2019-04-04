@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load staticfiles %}
+{% load static %}
 <html>
 
 <head>
@@ -8,11 +9,13 @@
     {% comment %} <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> {% endcomment %}
     <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/prism.css' %}">
     <script src="{% static 'js/js.cookie.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'build/bundle.js' %}"></script>
 </head>
+
 {% if request.user.is_authenticated %}
 <header>
     <div class="font">
@@ -30,9 +33,11 @@
         </nav>
     </div>
 </header>
+
 <body>
     <div>
         {% block content %}{% endblock %}
     </div>
 </body>
+
 </html>
