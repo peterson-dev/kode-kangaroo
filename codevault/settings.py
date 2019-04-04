@@ -68,7 +68,9 @@ ROOT_URLCONF = 'codevault.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'core/templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -146,7 +148,7 @@ INTERNAL_IPS = [
 # Registation
 
 ACCOUNT_ACTIVATION_DAYS = 7
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/snippets/'
 LOGOUT_REDIRECT_URL = '/'
 # Custom user config.
 AUTH_USER_MODEL = 'core.User'

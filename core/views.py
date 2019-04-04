@@ -5,11 +5,7 @@ from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.http import JsonResponse
 
-def index(request):
-    if request.user.is_authenticated:
-        return redirect('snippet_list')
-
-    return render(request, "core/index_logged_out.html")
+# from django.shortcuts import redirect, render
 
 class SnippetListView(LoginRequiredMixin, ListView):
     model = Snippet
@@ -22,6 +18,7 @@ class FolderDetailView(LoginRequiredMixin, DetailView):
 
 class SnippetDetailView(LoginRequiredMixin, DetailView):
     model = Snippet
+    template_name = 'core/snippet_detail.html'
 
 class SnippetUpdateView(LoginRequiredMixin, UpdateView):
     model = Snippet

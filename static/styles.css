@@ -22,6 +22,10 @@
     margin-left: 940px;
 }
 
+.edit {
+    margin-left: 2rem;
+}
+
 .button-snippet {
     background-color: #7EE905;
     border: none;
@@ -32,8 +36,8 @@
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
-    float: right;
-    margin-right: 1rem;
+    margin-left: 15px;
+    margin-bottom: 5px;
 }
 
 .snippet-box {
