@@ -38,8 +38,8 @@ class SnippetDeleteView(LoginRequiredMixin, DeleteView):
 
         return redirect('core/snippet_list.html')
 #
-# From class need to create APIView.  
-class SnippetDetail (APIView):
-    def delete (self, request, pk):
-        task = get_object_or_404()
+# # From class need to create APIView.  
+# class SnippetDetail (APIView):
+#     def delete (self, request, pk):
+#         task = get_object_or_404()
 
