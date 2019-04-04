@@ -7,9 +7,13 @@ from django.urls import reverse
 
 class Folder(models.Model):
     '''This model represents the folder model'''
-    title = models.CharField(max_length=35)
+    title = models.CharField(max_length=35, unique=True)
     category = models.ManyToManyField('Language', related_name='folder_category')
     user = models.ManyToManyField('User', related_name='user')
+    snippets = models.ManyToManyField('Snippet', null=True, blank=True)
+
+    def __str__(self):
+        return self.title
 
 class User(AbstractUser):
     '''This model represents the custom user model'''
