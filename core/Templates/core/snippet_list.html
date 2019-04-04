@@ -9,24 +9,22 @@
     <button class="font button dim dib">Save</button>
     <div class="ml5">
       <div class="draggable_snippets">
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-        <p>test</p>
-      </div>
     </div>
+    </div>
+    
+    {% for snippet in snippets.all %}
+    <div id="{{ snippet.title }}"><a href={% url 'snippet-detail' slug=snippet.slug %}>{{ snippet }}</a></div>
+    {% endfor %}
       <form></form>
 </div>
 
-<div class="mv4">
+{% comment %} <div class="mv4">
 <h2 class="font">Saved Snippets</h2>
     {% for snippet in snippets.all %}
       {% include "partials/snippet.html" %}
     {% empty %}
       <div>No snippets to show.</div>
-    {% endfor %}
-</div>
+    {% endfor %} 
+</div> {% endcomment %}
 
 {% endblock %}

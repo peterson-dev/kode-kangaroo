@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
     {% load static %}
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <script src="{% static 'js/js.cookie.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </head>
 <header>
     <div class="font">
         <nav class="tracked">
             <ul class="pa3 list pl0 mt0 flex flex-wrap bg-near-black nav_font_color">
-                <li class="nav_font_color pa3 link hover-white dib mr3">LOGO</li>
+                <li class="nav_font_color pa3 link hover-white dib mr3">&lt;/&gt;</li>
                 <li> <a class="nav_font_color pa3 link hover-white dib mr3" href="index">CodeVault</a></li>
                 {% if request.user.is_authenticated %}
                 <li><a class="nav_font_color pa3 link hover-white dib mr3" href="#0">Discover</a></li>
