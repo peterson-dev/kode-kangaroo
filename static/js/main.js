@@ -1,5 +1,8 @@
+/* globals fetch, Cookies */
+const $ = require('jquery')
+
 // import { format } from "util";
-// globals fetch, Cookies
+
 
 function query (selector) {
   return document.querySelector(selector)
