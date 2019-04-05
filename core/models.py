@@ -8,7 +8,6 @@ from django.urls import reverse
 class Folder(models.Model):
     '''This model represents the folder model'''
     title = models.CharField(max_length=35, unique=True)
-    category = models.ManyToManyField('Language', related_name='folder_category')
     user = models.ManyToManyField('User', related_name='user')
     snippets = models.ManyToManyField('Snippet', null=True, blank=True)
 
@@ -36,22 +35,52 @@ class User(AbstractUser):
         self.set_slug()
         super().save(*args, **kwargs)
         
-    # def get_absolute_url(self):
-    #     return reverse('user-profile', kwargs={'slug': self.slug})
+    def get_absolute_url(self):
+        return reverse('user-profile', kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.username
 
-class Language(models.Model):
-    '''This model represents the language category'''
-    name = models.CharField(max_length=50)
-    folder = models.ManyToManyField('Folder', null=True, blank=True)
-
 class Snippet(models.Model):
     '''This model represents the users post'''
+    LANG_CHOICES = (
+   #('actual value for model', 'human-readable name')
+    ('html', 'HTML'),
+    ('css', 'CSS'),
+    ('js', 'Javascript'),
+    ('bash', 'Bash'),
+    ('basic', 'Basic'),
+    ('c', 'C'),
+    ('csharp', 'C#'),
+    ('cpp', 'C++'),
+    ('coffee', 'CoffeeScript'),
+    ('clojure', 'Clojure'),
+    ('docker', 'Docker'),
+    ('elixir', 'Elixir'),
+    ('fsharp', 'F#'),
+    ('git', 'Git'),
+    ('go', 'Go'),
+    ('graphql', 'GraphQL'),
+    ('java', 'Java'),
+    ('json', 'JSON'),
+    ('monkey', 'Monkey'),
+    ('objectivec', 'Objective-C'),
+    ('pascal', 'Pascal'),
+    ('perl', 'Perl'),
+    ('php', 'PHP'),
+    ('py', 'Python'),
+    ('jsx', 'React JSX'),
+    ('ruby', 'Ruby'),
+    ('rust', 'Rust'),
+    ('sql', 'SQL'),
+    ('swift', 'Swift'),
+    ('ts', 'typescript'),
+    ('yml', 'YAML'),
+    )
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=50, null=False, blank=False)
-    languages = models.ManyToManyField('Language')
+    language = models.CharField(max_length=420, choices=LANG_CHOICES)
     post_content = models.TextField(max_length=5000)
     slug = models.SlugField()
     created_at = models.DateTimeField(auto_now=True)
