@@ -6,7 +6,7 @@
 <!--would like to add if statement that if logged in user matches the added by user, the link goes to their profile page, if the user does not match, then go to a lsit view of "public" posts by the added by user or a blank url or dead url.-->
 
 <h2 class="snippet-title">{{snippet.title}}</h2>
-<h3 class="snippet-user">Added by: <a href="">{{snippet.user}}</a></h3>
+<h3 class="snippet-user">Added by: <a href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a></h3>
 
 
 
