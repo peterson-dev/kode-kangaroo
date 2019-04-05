@@ -4,19 +4,26 @@
 {% block content %}
 <div>
     <h1 class="font ml5">Create Code Snippet:</h1>
-    <textarea class="snippet_input"></textarea>
-    <br>
-    <button class="font button dim dib">Save</button>
+    {% comment %} <textarea class="snippet_input"></textarea> {% endcomment %}
+    {% comment %} <br> {% endcomment %}
     <div class="ml5">
-      <div class="draggable_snippets">
-    </div>
-    </div>
-    
-    {% for snippet in snippets.all %}
-    <div id="{{ snippet.title }}"><a href={% url 'snippet-detail' slug=snippet.slug %}>{{ snippet }}</a></div>
-    {% endfor %}
-      <form></form>
+      {% comment %} <div class="draggable_snippets"> {% endcomment %}
+    {% comment %} </div> {% endcomment %}
+    {% comment %} </div>  {% endcomment %}
+
+    <form method='POST' action='{% url 'new-snippet' %}'>
+        {% csrf_token %}
+        <table border='1'>
+        {{ form }}
+        </table>
+        <button type='submit' class="font button dim dib">Save</button>
+    </form>
 </div>
+
+    {% for snippet in snippets.all %}
+    <div id="{{ snippet.title }}"><a href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a></div>
+    {% endfor %}
+
 
 {% comment %} <div class="mv4">
 <h2 class="font">Saved Snippets</h2>
