@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-# import django_heroku
+import django_heroku
 # We will need to uncomment the import heroku line when we are ready to set it up. The last line in this document will also need to be uncommented.
 
 
@@ -157,4 +157,4 @@ AUTH_USER_MODEL = 'core.User'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Activate Django-Heroku - must be last line. Sets all the correct settings | "Local" returns dictionary of all local variables. 
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
