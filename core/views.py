@@ -4,6 +4,7 @@ from core.models import Folder, Snippet
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.http import JsonResponse
+from django.contrib.auth.models import AbstractUser
 
 # from django.shortcuts import redirect, render
 
@@ -37,6 +38,20 @@ class SnippetDeleteView(LoginRequiredMixin, DeleteView):
             return JsonResponse({"complete": True})
 
         return redirect('core/snippet_list.html')
+
+
+def user_public_snippets(request, pk):
+    template_name = 'core/user_public_detail.html'
+    snippets = Snippet.objects.filter(public=True)
+    print(snippets)
+
+    context = {
+        'snippets': snippets,
+    }
+
+    return render(request, 'core/user_public_detail.html', context)
+
+
 #
 # # From class need to create APIView.  
 # class SnippetDetail (APIView):
