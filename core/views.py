@@ -1,9 +1,13 @@
 from django.views.generic import DetailView, ListView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from core.models import Folder, Snippet
+from .forms import NewSnippetForm
 from django.shortcuts import redirect, render
 from django.urls import reverse, reverse_lazy
 from django.http import JsonResponse
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_http_methods
+import json
 
 # from django.shortcuts import redirect, render
 
@@ -11,6 +15,29 @@ class SnippetListView(LoginRequiredMixin, ListView):
     model = Snippet
     context_object_name = 'snippets'
     template_name = 'core/snippet_list.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form'] = NewSnippetForm
+        return context
+
+@require_http_methods(['POST'])
+@login_required
+def new_snippet(request):
+    # if request.content_type == 'application/json':
+    #     body = json.loads(request.body)
+    # else:
+    #     body = request.POST
+    
+    form = NewSnippetForm(request.POST)
+
+    if form.is_valid():
+        form.save(user=request.user)
+
+        # if request.is_ajax():
+        #     return render(request, 'partials/snippets.html', {'snippet': snippet})
+
+    return redirect('snippet_list')
 
 class FolderDetailView(LoginRequiredMixin, DetailView):
     model = Folder
@@ -42,4 +69,3 @@ class SnippetDeleteView(LoginRequiredMixin, DeleteView):
 # class SnippetDetail (APIView):
 #     def delete (self, request, pk):
 #         task = get_object_or_404()
-
