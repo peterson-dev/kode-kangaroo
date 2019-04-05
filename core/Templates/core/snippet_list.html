@@ -13,7 +13,7 @@
     </div>
     
     {% for snippet in snippets.all %}
-    <div id="{{ snippet.title }}"><a href={% url 'snippet-detail' slug=snippet.slug %}>{{ snippet }}</a></div>
+    <div id="{{ snippet.title }}"><a href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a></div>
     {% endfor %}
       <form></form>
 </div>
