@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<!--would like to add if statement that if logged in user matches the added by user, the link goes to their profile page, if the user does not match, then go to a lsit view of "public" posts by the added by user or a blank url or dead url.-->
+
+<h2>{{snippet.title}}</h2>
+
+<form action="" method="POST">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <input type="submit" value="Save">
+</form>
+
+<div>
+    <p>Created at: {{snippet.created_at}}</p> 
+</div>
+{% comment %} <div>
+    <button type="button" value="Save Snippet">Save</button>
+</div> {% endcomment %}
+
+
+{% endblock %}
