@@ -1,34 +1,42 @@
-{% extends "registration/registration_base.html" %}
-
+<!DOCTYPE html>
+{% load staticfiles %}
 {% load static %}
+<html>
 
+<head>
+    <title>CodeVault</title>
+    <meta charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/prism.css' %}">
+    <script src="{% static 'js/js.cookie.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'build/bundle.js' %}"></script>
+</head>
 {% load i18n %}
 {% block content %}
-
 
   <div class="bg-black min-vh-100 nav_font_color">
     <div class="pa4 center mw6">
       <div class="tc">
-
-        <h1 class="f-headline lh-solid">
+        <h1 class="font f-headline lh-solid">
           CodeVault
         </h1>
-        <p class="white f3">A code snippet manager</p>
-        <form method="post" action="">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <!-- <label for="id_username">Username:</label>
-          <input type="text" name="username" autofocus="" required="" id="id_username">
+        <h2 class="logo-font-size font logo nav_font_color pa3">&lt;/&gt;</h2>
+          <div class="body-font">
+            <p class="white f3">A code snippet manager</p>
+            <form method="post" action="">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <input type="submit" value="{% trans 'Log in' %}" />
+              <input type="hidden" name="next" value="{{ next }}" />
+          </form>
           
-          <label for="id_password">Password:</label>
-          <input type="password" name="password" required="" id="id_password"> -->
-
-          <input type="submit" value="{% trans 'Log in' %}" />
-          <input type="hidden" name="next" value="{{ next }}" />
-      </form>
-      
-      <p>{% trans "Forgot your password?" %} <a href="{% url 'auth_password_reset' %}">{% trans "Reset it" %}</a>.</p>
-      <p>{% trans "Not a member?" %} <a href="{% url 'registration_register' %}">{% trans "Register" %}</a>.</p>
+          <p>{% trans "Forgot your password?" %} <a class="nav_font_color link hover-white dib" href="{% url 'auth_password_reset' %}">{% trans "Reset it." %}</a></p>
+          <p>{% trans "Not a member?" %} <a class="nav_font_color link hover-white dib" href="{% url 'registration_register' %}">{% trans "Register." %}</a></p>
+        </div>
       </div>
     </div>
   </div>
