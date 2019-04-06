@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     # Our Apps
     'core',
+    'core.templatetags',
 ]
 
 MIDDLEWARE = [
