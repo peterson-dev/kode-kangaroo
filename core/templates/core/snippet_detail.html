@@ -14,8 +14,8 @@
     <p class="snippet-box" style="border: 2px solid black">{{snippet.post_content}}</p>
     <div>
         {% if request.user.is_authenticated and user == snippet.user %}
-            <button class="button-snippet" type="button" value="Edit Snippet"><a href="">Edit</a></button>
-            <button class="button-snippet" type="button" value="Delete Snippet"><a href="">Delete</a></button>
+            <button class="button-snippet" type="button" value="Edit Snippet"><a href="{% url 'snippet-update' slug=snippet.slug %}">Edit</a></button>
+            <button class="delete-snippet button-snippet" type="button" value="Delete Snippet"><a href="{% url 'confirm-snippet-delete' slug=snippet.slug %}">Delete</a></button>
         {% else %}
             <button class="button-snippet" type="button" value="Copy Snippet"><a href="">Copy</a></button>
         {% endif %}
@@ -24,7 +24,8 @@
 
 
 <!-- this will be the code used for the buttons once there is data to confirm functionality. The if statement will have to be updated for the logged in user === user who posted snippet. also added link for the button even though we know will be updated to javascript by end of week. -->
-<div>
+
+{% comment %} <div>
     {% if request.user.is_authenticated and user == snippet.user %}
         <button class="button-snippet" type="button" value="Edit Snippet"><a href={% url 'snippet-update' slug=snippet.slug %}>Edit</a></button>
 
@@ -32,13 +33,17 @@
             {% csrf_token %}
             <button class="button-snippet" type="button">Delete</button>
         </form>
-        {% comment %} <button class="delete-snippet button-snippet" type="button" value="Delete Snippet"><a href={% url 'confirm-snippet-delete' slug=snippet.slug %}>Delete</a></button> {% endcomment %}
+         
     {% else %}
         <button class="button-snippet" type="button" value="Copy Snippet"><a href="">Copy</a></button>
     {% endif %}
-</div>
+</div> {% endcomment %}
+
 <div class="snippet-languages">
-    {% for language in snippet.languages.all %}{{language.name}}  {% if not forloop.last %}{%endif%}{% endfor %}
+    {% for language in snippet.languages.all %}{{language.name}}  
+    {% if not forloop.last %}
+    {%endif%}
+    {% endfor %}
 </div>
 
 <div>

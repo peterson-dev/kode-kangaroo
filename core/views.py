@@ -3,12 +3,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from core.models import Folder, Snippet
 from .forms import NewSnippetForm
 from django.shortcuts import redirect, render
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
-import json
-from django.contrib.auth.models import AbstractUser
+
 
 # from django.shortcuts import redirect, render
 
@@ -51,7 +50,7 @@ class SnippetDetailView(LoginRequiredMixin, DetailView):
 class SnippetUpdateView(LoginRequiredMixin, UpdateView):
     model = Snippet
     template_name = 'core/update_snippet.html'
-    fields = ['title', 'post_content', 'languages']
+    fields = ['title', 'post_content']
     success_url = reverse_lazy('snippet_list')
 
 class SnippetDeleteView(LoginRequiredMixin, DeleteView):

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<h2>Delete Snippet</h2>
+
+Are you sure you want to delete {{snippet.title}}?
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes, delete.">
+</form>
+
+{% endblock %}
