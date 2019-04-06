@@ -22,6 +22,8 @@
 
     {% for snippet in snippets.all %}
     <div id="{{ snippet.title }}"><a href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a></div>
+    <button><i class="fa fa-trash-o" aria-hidden="true"></i>
+    </button>
     {% endfor %}
 
 
