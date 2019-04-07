@@ -20,6 +20,7 @@ class NewSnippetForm(forms.Form):
     )
     public = forms.BooleanField(
         initial=False,
+        required=False,
         label='Public?',
         widget=forms.CheckboxInput
     )

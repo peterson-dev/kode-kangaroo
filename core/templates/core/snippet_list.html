@@ -33,25 +33,30 @@
 </div>
 <div class="ml5 mt3" style="font-family: 'Raleway';">
   <h3>Your Snippet List</h3>
-  {% for snippet in snippets.all %}
-  {% if user == snippet.user %}
-  <div id="{{ snippet.title }}">
-    <a class="link black"
-      style="font-family: 'Raleway'; text-shadow: 1px 1px 1px #c4c0c0, 3px 3px 5px rgba(255, 255, 0, 0.741);"
-      href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a>
-    <span class="f6 gray">{% if snippet.public == True %} (Public){% else %} (Private){% endif %}</span>
-    <span class="f6 gray">Copied: {% copyCount snippet.pk %}.</span>
-    <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST'
-      action="{% url 'confirm-snippet-delete' slug=snippet.slug %}">
-      {% csrf_token %}
-      <button type='submit' class="font button dim dib"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-    </form>
-  </div>
+    {% for snippet in snippets.all %}
+    {% if user == snippet.user %}
+    <div id="snippet-{{ snippet.pk }}">
+      <a href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a>
+
+      <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' slug=snippet.slug %}">
+        {% csrf_token %}
+        <button type='submit' class="font button dim dib"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+      </form>
+      
+      <span class="f6 gray">
+      {% if snippet.public == True %} 
+        (Public)
+      {% else %} 
+        (Private)
+      {% endif %}
+      </span>
+      <span class="f6 gray">Copied: {% copyCount snippet.pk %}.</span>    
+    </div>
   
   {% endif %}
   {% endfor %}
 </div>
-
+{% comment %} style="font-family: 'Raleway'; text-shadow: 1px 1px 1px #c4c0c0, 3px 3px 5px rgba(255, 255, 0, 0.741);" {% endcomment %}
 
 {% comment %} <div class="mv4">
   <h2 class="font">Saved Snippets</h2>
