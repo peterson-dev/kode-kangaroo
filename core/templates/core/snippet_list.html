@@ -16,6 +16,14 @@
   {% comment %} </div> {% endcomment %}
   {% comment %} </div> {% endcomment %}
 
+  <script src="{% static 'js/prism.js' %}"></script>
+  <pre class="line-numbers"><code class="language-css">.snippet-box {
+    margin-left: 2rem;
+    padding: 1rem;
+    width: 400px;
+    height: 400px;
+}</code></pre>
+
   <form method='POST' action="{% url 'new-snippet' %}">
     {% csrf_token %}
     <table border="1" class="mb2">

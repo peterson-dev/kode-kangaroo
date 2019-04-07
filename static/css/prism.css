@@ -1,5 +1,5 @@
 /* PrismJS 1.16.0
-https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+c+csharp+bash+basic+cpp+coffeescript+clojure+ruby+markup-templating+docker+elixir+fsharp+git+go+graphql+java+php+json+markdown+matlab+monkey+typescript+objectivec+pascal+perl+sql+powershell+python+jsx+rust+swift+yaml+tsx+vim&plugins=toolbar+show-invisibles+show-language */
+https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+clike+javascript+c+csharp+bash+basic+cpp+coffeescript+clojure+ruby+markup-templating+docker+elixir+fsharp+git+go+graphql+java+php+json+monkey+typescript+objectivec+pascal+perl+sql+python+jsx+rust+swift+yaml&plugins=line-numbers+toolbar+show-language */
 /**
  * prism.js tomorrow night eighties for JavaScript, CoffeeScript, CSS and HTML
  * Based on https://github.com/chriskempson/tomorrow-theme
@@ -123,6 +123,48 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
      color: green;
  }
  
+ pre[class*="language-"].line-numbers {
+     position: relative;
+     padding-left: 3.8em;
+     counter-reset: linenumber;
+ }
+ 
+ pre[class*="language-"].line-numbers > code {
+     position: relative;
+     white-space: inherit;
+ }
+ 
+ .line-numbers .line-numbers-rows {
+     position: absolute;
+     pointer-events: none;
+     top: 0;
+     font-size: 100%;
+     left: -3.8em;
+     width: 3em; /* works for line-numbers below 1000 lines */
+     letter-spacing: -1px;
+     border-right: 1px solid #999;
+ 
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+ 
+ }
+ 
+     .line-numbers-rows > span {
+         pointer-events: none;
+         display: block;
+         counter-increment: linenumber;
+     }
+ 
+         .line-numbers-rows > span:before {
+             content: counter(linenumber);
+             color: #999;
+             display: block;
+             padding-right: 0.8em;
+             text-align: right;
+         }
+ 
  div.code-toolbar {
      position: relative;
  }
@@ -180,41 +222,6 @@ https://prismjs.com/download.html#themes=prism-tomorrow&languages=markup+css+cli
  div.code-toolbar > .toolbar span:focus {
      color: inherit;
      text-decoration: none;
- }
- 
- .token.tab:not(:empty),
- .token.cr,
- .token.lf,
- .token.space {
-     position: relative;
- }
- 
- .token.tab:not(:empty):before,
- .token.cr:before,
- .token.lf:before,
- .token.space:before {
-     color: #808080;
-     opacity: 0.6;
-     position: absolute;
- }
- 
- .token.tab:not(:empty):before {
-     content: '\21E5';
- }
- 
- .token.cr:before {
-     content: '\240D';
- }
- 
- .token.crlf:before {
-     content: '\240D\240A';
- }
- .token.lf:before {
-     content: '\240A';
- }
- 
- .token.space:before {
-     content: '\00B7';
  }
  
  
