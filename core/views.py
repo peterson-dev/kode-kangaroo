@@ -89,8 +89,3 @@ def all_public_snippets(request):
     return render(request, 'core/discover_list.html', context)
 
 
-#
-# # From class need to create APIView.  
-# class SnippetDetail (APIView):
-#     def delete (self, request, pk):
-#         task = get_object_or_404()
