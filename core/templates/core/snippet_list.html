@@ -41,11 +41,11 @@
       href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a>
     <span class="f6 gray">{% if snippet.public == True %} (Public){% else %} (Private){% endif %}</span>
     <span class="f6 gray">Copied: {% copyCount snippet.pk %}.</span>
-    <a href="{% url 'confirm-snippet-delete' slug=snippet.slug %}">
-      <button class="br-100 shadow-2 ml2">
-        <i class="fa fa-trash-o purple" aria-hidden="true"></i>
-      </button>
-    </a>
+    <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST'
+      action="{% url 'confirm-snippet-delete' slug=snippet.slug %}">
+      {% csrf_token %}
+      <button type='submit' class="font button dim dib"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+    </form>
   </div>
   
   {% endif %}
