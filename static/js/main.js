@@ -29,36 +29,34 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 })
 
-// document.addEventListener('DOMContentLoaded', function (event) {
-//   const newSnippetForm = query('#new-snippet-form')
-//   newSnippetForm.addEventListener('submit', function (event) {
-//     event.preventDefault()
-//     const csrftoken = Cookies.get('csrftoken')
+// const newSnippetForm = query('#new-snippet-form')
+// newSnippetForm.addEventListener('submit', function (event) {
+//   event.preventDefault()
+//   const csrftoken = Cookies.get('csrftoken')
 
-//     const snippetField = query('#snippet-field')
-//     const body = {
-//       'snippet': snippetField.value
-//     }
-//     snippetField.value = ''
+//   const snippetField = query('#snippet-field')
+//   const body = {
+//     'snippet': snippetField.value
+//   }
+//   snippetField.value = ''
 
-//     fetch(newSnippetForm.action, {
-//       method: 'POST',
-//       headers: {
-//         'X-CSRFToken': csrftoken,
-//         'X-Requested-With': 'XMLHttpRequest',
-//         'Content-Type': 'application/json'
-//       },
-//       body: JSON.stringify(body)
-//     })
-//       .then(response => {
-//         if (!response.ok) {
-//           throw Error(response.status.Text)
-//         }
-//         return response.text()
-//       })
-//       .then(text => {
-//         const snippetFragment = document.createRange().createContextualFragment(text)
-//         query('#snippet-list').appendChild(snippetFragment)
-//       })
+//   fetch(newSnippetForm.action, {
+//     method: 'POST',
+//     headers: {
+//       'X-CSRFToken': csrftoken,
+//       'X-Requested-With': 'XMLHttpRequest',
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(body)
 //   })
+//     .then(response => {
+//       if (!response.ok) {
+//         throw Error(response.status.Text)
+//       }
+//       return response.text()
+//     })
+//     .then(text => {
+//       const snippetFragment = document.createRange().createContextualFragment(text)
+//       query('#snippet-list').appendChild(snippetFragment)
+//     })
 // })

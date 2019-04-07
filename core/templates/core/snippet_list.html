@@ -16,19 +16,20 @@
   {% comment %} </div> {% endcomment %}
   {% comment %} </div> {% endcomment %}
 
-  <form method='POST' action="{% url 'new-snippet' %}">
+  <form id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
     {% csrf_token %}
     <table border="1" class="mb2">
       {{ form }}
     </table>
-    <button type="submit" 
+    <input id="snippet-field" type="submit" class="snippet-field"></input>
+    {% comment %} <button type="submit" 
     class="mt2" 
     style="background-color: #7EE905; 
     padding: 6px 20px; 
     text-align: center;
     text-decoration: none;
     font-size: 1rem;
-    font-family: 'Roboto', sans-serif;">Save</button>
+    font-family: 'Roboto', sans-serif;">Save</button> {% endcomment %}
   </form>
 </div>
 <div class="ml5 mt3" style="font-family: 'Raleway';">
@@ -42,7 +43,7 @@
         {% csrf_token %}
         <button type='submit' class="font button dim dib"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
       </form>
-      
+
       <span class="f6 gray">
       {% if snippet.public == True %} 
         (Public)

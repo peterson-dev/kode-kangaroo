@@ -21,6 +21,7 @@ class SnippetListView(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         context['form'] = NewSnippetForm
         return context
+        
 
 @require_http_methods(['POST'])
 @login_required
