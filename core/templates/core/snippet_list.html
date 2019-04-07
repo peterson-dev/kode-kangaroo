@@ -16,27 +16,21 @@
   {% comment %} </div> {% endcomment %}
   {% comment %} </div> {% endcomment %}
 
-  <script src="{% static 'js/prism.js' %}"></script>
-  <pre class="line-numbers"><code class="language-css">.snippet-box {
-    margin-left: 2rem;
-    padding: 1rem;
-    width: 400px;
-    height: 400px;
-}</code></pre>
 
-  <form method='POST' action="{% url 'new-snippet' %}">
+  <form id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
     {% csrf_token %}
     <table border="1" class="mb2">
       {{ form }}
     </table>
-    <button type="submit" 
+    <input id="snippet-field" type="submit" class="snippet-field"></input>
+    {% comment %} <button type="submit" 
     class="mt2" 
     style="background-color: #7EE905; 
     padding: 6px 20px; 
     text-align: center;
     text-decoration: none;
     font-size: 1rem;
-    font-family: 'Roboto', sans-serif;">Save</button>
+    font-family: 'Roboto', sans-serif;">Save</button> {% endcomment %}
   </form>
 </div>
 <div class="ml5 mt3" style="font-family: 'Raleway';">
@@ -46,11 +40,11 @@
     <div id="snippet-{{ snippet.pk }}">
       <a href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a>
 
-      <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' slug=snippet.slug %}">
+      <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
         {% csrf_token %}
         <button type='submit' class="font button dim dib"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
       </form>
-      
+
       <span class="f6 gray">
       {% if snippet.public == True %} 
         (Public)
