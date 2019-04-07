@@ -9,7 +9,7 @@
 }
 
 /* Adjust button margin-left if there is a better way of doing it */
-.button {
+/* .button {
     background-color: #7EE905;
     border: none;
     color: black;
@@ -19,7 +19,8 @@
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
-}
+    margin-left: 0px;
+} */
 
 .edit {
     margin-left: 2rem;
