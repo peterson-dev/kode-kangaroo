@@ -17,7 +17,7 @@
 <div>
     {% if request.user.is_authenticated and user == snippet.user %}
     <button class="button-snippet" type="button" value="Edit Snippet"><a href="{% url 'snippet-update' slug=snippet.slug %}">Edit</a></button>
-    <button class="delete-snippet button-snippet" type="button" value="Delete Snippet"><a href="{% url 'confirm-snippet-delete' slug=snippet.slug %}">Delete</a></button>
+    <button class="delete-snippet button-snippet" type="button" value="Delete Snippet"><a href="{% url 'confirm-snippet-delete' pk=snippet.pk %}">Delete</a></button>
     {% else %}
     <button class="button-snippet" type="button" value="Copy Snippet"><a href="">Copy</a></button>
     {% endif %}
@@ -30,7 +30,7 @@
     {% if request.user.is_authenticated and user == snippet.user %}
         <button class="button-snippet" type="button" value="Edit Snippet"><a href={% url 'snippet-update' slug=snippet.slug %}>Edit</a></button>
 
-        <form data-title="{{ snippet.title }}" class="delete-snippet" method="POST" actions="{% url 'confirm-snippet-delete' slug=snippet.slug %}">
+        <form data-title="{{ snippet.title }}" class="delete-snippet" method="POST" actions="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
             {% csrf_token %}
             <button class="button-snippet" type="button">Delete</button>
         </form>
