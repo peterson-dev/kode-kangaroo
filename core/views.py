@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 
 
+
 # from django.shortcuts import redirect, render
 
 class SnippetListView(LoginRequiredMixin, ListView):
@@ -68,8 +69,7 @@ class SnippetDeleteView(LoginRequiredMixin, DeleteView):
 
 def user_public_snippets(request, pk):
     template_name = 'core/user_public_detail.html'
-    snippets = Snippet.objects.filter(public=True)
-    print(snippets)
+    snippets = Snippet.objects.filter(public=True, user=pk)
 
     context = {
         'snippets': snippets,
@@ -77,10 +77,10 @@ def user_public_snippets(request, pk):
 
     return render(request, 'core/user_public_detail.html', context)
 
+
 def all_public_snippets(request):
     template_name = 'core/discover_list.html'
     snippets = Snippet.objects.filter(public=True)
-    print(snippets)
 
     context = {
         'snippets': snippets,
