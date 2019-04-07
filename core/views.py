@@ -44,6 +44,9 @@ class FolderDetailView(LoginRequiredMixin, DetailView):
     model = Folder
     template_name = 'core/folder_contents.html'
 
+    # def get_context_data(self, **kwargs):
+    
+
 class SnippetDetailView(LoginRequiredMixin, DetailView):
     model = Snippet
     template_name = 'core/snippet_detail.html'

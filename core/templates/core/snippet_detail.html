@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load snippet_tags %}
 {% load staticfiles %}
+{% load static %}
 
 {% block content %}
 
@@ -11,10 +12,14 @@
 <div class="ml4">Copy Count: {% copyCount snippet.pk %}</div>
 
 
-
 <div>
-    <p class="snippet-box" style="border: 2px solid black">{{snippet.post_content}}</p>
-    <div>
+    <script src="{% static 'js/prism.js' %}"></script>
+    <pre><code class="language-{{ form.language }}">
+        <!-- need to pass form context to detail view function -->
+        <p class="snippet-box" style="border: 2px solid black">{{snippet.post_content}}</p>
+    </code></pre>
+<div>
+
         {% if request.user.is_authenticated and user == snippet.user %}
             <button class="button-snippet" type="button" value="Edit Snippet"><a href="{% url 'snippet-update' slug=snippet.slug %}">Edit</a></button>
             <button class="delete-snippet button-snippet" type="button" value="Delete Snippet"><a href="{% url 'confirm-snippet-delete' slug=snippet.slug %}">Delete</a></button>
