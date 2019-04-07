@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth.models import AbstractUser
 
 
 # from django.shortcuts import redirect, render
@@ -68,7 +69,7 @@ class SnippetDeleteView(LoginRequiredMixin, DeleteView):
 
 def user_public_snippets(request, pk):
     template_name = 'core/user_public_detail.html'
-    snippets = Snippet.objects.filter(public=True)
+    snippets = Snippet.objects.filter(public=True, user=pk)
     print(snippets)
 
     context = {
@@ -76,6 +77,7 @@ def user_public_snippets(request, pk):
     }
 
     return render(request, 'core/user_public_detail.html', context)
+
 
 def all_public_snippets(request):
     template_name = 'core/discover_list.html'
