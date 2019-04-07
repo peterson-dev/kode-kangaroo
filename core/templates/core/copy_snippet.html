@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block content %}
+
+<h2>Copy Snippet</h2>
+
+Are you sure you want to delete {{snippet.title}}?
+
+<form method="post" action="">
+        {% csrf_token %}
+        <table class="ma3">
+
+        <tr>
+            <td>{{ form.username.label_tag }}</td>
+            <td>{{ form.username }}</td>
+        </tr>
+
+        <tr>
+            <td>{{ form.password.label_tag }}</td>
+            <td>{{ form.password }}</td>
+        </tr>
+        </table> 
+
+        <input class="ma2" type="submit" value="save" />
+</form>
+
+{% endblock %}

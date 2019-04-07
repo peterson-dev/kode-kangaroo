@@ -1,4 +1,4 @@
-from django.views.generic import DetailView, ListView, UpdateView, DeleteView
+from django.views.generic import DetailView, ListView, UpdateView, DeleteView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from core.models import Folder, Snippet
 from .forms import NewSnippetForm
@@ -91,9 +91,14 @@ def all_public_snippets(request):
 
     return render(request, 'core/discover_list.html', context)
 
+class SnippetCopyView(LoginRequiredMixin, CreateView):
+    model = Snippet
+    template_name = 'core/copy_snippet.html'
+    success_url = reverse_lazy('snippet_list')
 
-#
-# # From class need to create APIView.  
-# class SnippetDetail (APIView):
-#     def delete (self, request, pk):
-#         task = get_object_or_404()
+    def form_validation(self, request):
+
+        if self.request.is_ajax():
+            return JsonResponse({"complete": True})
+
+        return redirect('core/snippet_list.html')
