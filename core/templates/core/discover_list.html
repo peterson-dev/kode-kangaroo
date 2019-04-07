@@ -28,6 +28,13 @@
         font-family: 'Roboto', sans-serif;
         cursor: pointer;" 
         value="{{snippet.post_content}}">Copy to Clipboard</button>
+
+    <form data-snippetpk="{{ snippet.pk }}" class="copy-snippet" method='POST'
+    action="{% url 'copy-snippet' slug=snippet.slug %}">
+    {% csrf_token %}
+    <button type='submit' class="font button dim dib">copy</i></button>
+
+  </form>
     </div>  
 </div>
 {% endfor %}

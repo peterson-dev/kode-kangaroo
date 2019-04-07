@@ -10,4 +10,5 @@ urlpatterns = [
     path('snippet/<slug:slug>/delete', views.SnippetDeleteView.as_view(), name='confirm-snippet-delete'),
     path('snippets/user/<int:pk>', views.user_public_snippets, name = 'user_snippets'),
     path('snippets/discover', views.all_public_snippets, name = 'discover_list'),
+    path('snippet/<slug:slug>/copy', views.SnippetCopyView.as_view(), name='copy-snippet'),
 ]

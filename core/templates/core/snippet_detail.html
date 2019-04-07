@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load snippet_tags %}
 {% load staticfiles %}
 {% load static %}
 
@@ -10,7 +9,6 @@
 
 <h2 class="snippet-title">{{snippet.title}}</h2>
 <h3 class="snippet-user">Added by: <a href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a></h3>
-<div class="ml4">Copy Count: {% copyCount snippet.pk %}</div>
 
 <script src="{% static 'js/prism.js' %}"></script>
 <pre class="line-numbers"><code class=“language-{{snippet.language}}“>{{snippet.post_content}}</code></pre>
@@ -27,8 +25,7 @@
 
 
 <!-- this will be the code used for the buttons once there is data to confirm functionality. The if statement will have to be updated for the logged in user === user who posted snippet. also added link for the button even though we know will be updated to javascript by end of week. -->
-
-{% comment %} <div>
+<div>
     {% if request.user.is_authenticated and user == snippet.user %}
         <button class="button-snippet" type="button" value="Edit Snippet"><a href={% url 'snippet-update' slug=snippet.slug %}>Edit</a></button>
 
@@ -36,17 +33,13 @@
             {% csrf_token %}
             <button class="button-snippet" type="button">Delete</button>
         </form>
-         
+        {% comment %} <button class="delete-snippet button-snippet" type="button" value="Delete Snippet"><a href={% url 'confirm-snippet-delete' slug=snippet.slug %}>Delete</a></button> {% endcomment %}
     {% else %}
         <button class="button-snippet" type="button" value="Copy Snippet"><a href="">Copy</a></button>
     {% endif %}
-</div> {% endcomment %}
-
+</div>
 <div class="snippet-languages">
-    {% for language in snippet.languages.all %}{{language.name}}  
-    {% if not forloop.last %}
-    {%endif%}
-    {% endfor %}
+    {% for language in snippet.languages.all %}{{language.name}}  {% if not forloop.last %}{%endif%}{% endfor %}
 </div>
 
 <div>
