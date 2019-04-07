@@ -39,7 +39,7 @@
     <div id="snippet-{{ snippet.pk }}">
       <a href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a>
 
-      <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' slug=snippet.slug %}">
+      <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
         {% csrf_token %}
         <button type='submit' class="font button dim dib"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
       </form>
