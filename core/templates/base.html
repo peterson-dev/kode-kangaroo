@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+{% load snippet_tags %}
 {% load staticfiles %}
 {% load static %}
+<!DOCTYPE html>
 <html>
-
 <head>
     <title>CodeVault</title>
     <meta charset="utf-8">
@@ -18,8 +18,8 @@
 </head>
 
 {% if request.user.is_authenticated %}
-<header>
-    <div class="font">
+<header class="mb0">
+    <div class="font mb0">
         <nav class="tracked">
             <ul class="pa3 list pl0 mt0 flex flex-wrap bg-near-black nav_font_color">
                 <li class="logo logo_font nav_font_color ml3 pa2 link hover-white dib mr3">&lt;/&gt;</li>
@@ -35,9 +35,16 @@
     </div>
 </header>
 
-<body>
-    <div>
-        {% block content %}{% endblock %}
+<body class="mt0">
+    <div class="flex wrap mt0">
+        <div class="">
+            {% block sidebar %}
+            {% show_user_folders request.user %}
+            {% endblock %}
+        </div>
+        <div>
+            {% block content %}{% endblock %}
+        </div>
     </div>
 </body>
 
