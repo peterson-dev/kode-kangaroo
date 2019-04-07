@@ -7,27 +7,23 @@
 
 <!--would like to add if statement that if logged in user matches the added by user, the link goes to their profile page, if the user does not match, then go to a lsit view of "public" posts by the added by user or a blank url or dead url.-->
 
+
 <h2 class="snippet-title">{{snippet.title}}</h2>
 <h3 class="snippet-user">Added by: <a href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a></h3>
 <div class="ml4">Copy Count: {% copyCount snippet.pk %}</div>
 
+<script src="{% static 'js/prism.js' %}"></script>
+<pre class="line-numbers"><code class=“language-{{snippet.language}}“>{{snippet.post_content}}</code></pre>
 
 <div>
-    <script src="{% static 'js/prism.js' %}"></script>
-    <pre><code class="language-{{ form.language }}">
-        <!-- need to pass form context to detail view function -->
-        <p class="snippet-box" style="border: 2px solid black">{{snippet.post_content}}</p>
-    </code></pre>
-<div>
-
-        {% if request.user.is_authenticated and user == snippet.user %}
-            <button class="button-snippet" type="button" value="Edit Snippet"><a href="{% url 'snippet-update' slug=snippet.slug %}">Edit</a></button>
-            <button class="delete-snippet button-snippet" type="button" value="Delete Snippet"><a href="{% url 'confirm-snippet-delete' slug=snippet.slug %}">Delete</a></button>
-        {% else %}
-            <button class="button-snippet" type="button" value="Copy Snippet"><a href="">Copy</a></button>
-        {% endif %}
-    </div>
+    {% if request.user.is_authenticated and user == snippet.user %}
+    <button class="button-snippet" type="button" value="Edit Snippet"><a href="{% url 'snippet-update' slug=snippet.slug %}">Edit</a></button>
+    <button class="delete-snippet button-snippet" type="button" value="Delete Snippet"><a href="{% url 'confirm-snippet-delete' slug=snippet.slug %}">Delete</a></button>
+    {% else %}
+    <button class="button-snippet" type="button" value="Copy Snippet"><a href="">Copy</a></button>
+    {% endif %}
 </div>
+
 
 
 <!-- this will be the code used for the buttons once there is data to confirm functionality. The if statement will have to be updated for the logged in user === user who posted snippet. also added link for the button even though we know will be updated to javascript by end of week. -->
