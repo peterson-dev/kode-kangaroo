@@ -50,7 +50,7 @@ class SnippetDetailView(LoginRequiredMixin, DetailView):
 class SnippetUpdateView(LoginRequiredMixin, UpdateView):
     model = Snippet
     template_name = 'core/update_snippet.html'
-    fields = ['title', 'post_content']
+    fields = ['title', 'post_content', 'public']
     success_url = reverse_lazy('snippet_list')
 
 class SnippetDeleteView(LoginRequiredMixin, DeleteView):
