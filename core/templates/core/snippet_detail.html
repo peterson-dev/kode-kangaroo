@@ -11,38 +11,26 @@
 <h2 class="snippet-title">{{snippet.title}}</h2>
 <h3 class="snippet-user">Added by: <a href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a></h3>
 
+{% comment %} Prism styling {% endcomment %}
 <script src="{% static 'js/prism.js' %}"></script>
 <pre class="line-numbers"><code class=“language-{{snippet.language}}“>{{snippet.post_content}}</code></pre>
 
 <div>
     {% if request.user.is_authenticated and user == snippet.user %}
-    <button class="button-snippet" type="button" value="Edit Snippet"><a href="{% url 'snippet-update' slug=snippet.slug %}">Edit</a></button>
-    <button class="delete-snippet button-snippet" type="button" value="Delete Snippet"><a href="{% url 'confirm-snippet-delete' pk=snippet.pk %}">Delete</a></button>
-    {% else %}
-    <button class="button-snippet" type="button" value="Copy Snippet"><a href="">Copy</a></button>
-    {% endif %}
-</div>
-
-
-
-<!-- this will be the code used for the buttons once there is data to confirm functionality. The if statement will have to be updated for the logged in user === user who posted snippet. also added link for the button even though we know will be updated to javascript by end of week. -->
-<div>
-    {% if request.user.is_authenticated and user == snippet.user %}
-        <button class="button-snippet" type="button" value="Edit Snippet"><a href={% url 'snippet-update' slug=snippet.slug %}>Edit</a></button>
-
-        <form data-title="{{ snippet.title }}" class="delete-snippet" method="POST" actions="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
-            {% csrf_token %}
-            <button class="button-snippet" type="button">Delete</button>
-        </form>
-        {% comment %} <button class="delete-snippet button-snippet" type="button" value="Delete Snippet"><a href={% url 'confirm-snippet-delete' slug=snippet.slug %}>Delete</a></button> {% endcomment %}
+        <button class="button-snippet" type="button" value="Edit Snippet"><a href="{% url 'snippet-update' slug=snippet.slug %}">Edit</a></button>
+        <button class="delete-snippet button-snippet" type="button" value="Delete Snippet"><a href="{% url 'confirm-snippet-delete' pk=snippet.pk %}">Delete</a></button>
     {% else %}
         <button class="button-snippet" type="button" value="Copy Snippet"><a href="">Copy</a></button>
     {% endif %}
 </div>
-<div class="snippet-languages">
-    {% for language in snippet.languages.all %}{{language.name}}  {% if not forloop.last %}{%endif%}{% endfor %}
+<div>
+{% if snippet.public == True %} 
+        (Public)
+        <span class="f6 gray">Copied: {% copyCount snippet.pk %}.</span>    
+      {% else %} 
+        (Private)
+      {% endif %}
 </div>
-
 <div>
     <p class="snippet-created">Created at: {{snippet.created_at}}</p>
 </div>
