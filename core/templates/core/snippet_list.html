@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load snippet_tags %}
 {% load staticfiles %}
 
 {% block content %}
@@ -21,7 +22,7 @@
       {{ form }}
     </table>
     <button type="submit" 
-    class="mt2 button" 
+    class="mt2" 
     style="background-color: #7EE905; 
     padding: 6px 20px; 
     text-align: center;
@@ -39,6 +40,7 @@
       style="font-family: 'Raleway'; text-shadow: 1px 1px 1px #c4c0c0, 3px 3px 5px rgba(255, 255, 0, 0.741);"
       href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a>
     <span class="f6 gray">{% if snippet.public == True %} (Public){% else %} (Private){% endif %}</span>
+    <span class="f6 gray">Copied: {% copyCount snippet.pk %}.</span>
     <a href="{% url 'confirm-snippet-delete' slug=snippet.slug %}">
       <button class="br-100 shadow-2 ml2">
         <i class="fa fa-trash-o purple" aria-hidden="true"></i>

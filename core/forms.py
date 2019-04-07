@@ -18,6 +18,11 @@ class NewSnippetForm(forms.Form):
         max_length=1000,
         widget=forms.Textarea(attrs={'placeholder': 'add a new snippet','required': True}),
     )
+    public = forms.BooleanField(
+        initial=False,
+        label='Public?',
+        widget=forms.CheckboxInput
+    )
 
     def save(self, user, *args, **kwargs):
         if self.is_valid():
@@ -25,6 +30,7 @@ class NewSnippetForm(forms.Form):
                 'title': self.cleaned_data['title'], 
                 'language': self.cleaned_data['language'], 
                 'post_content': self.cleaned_data['post_content'],
+                'public': self.cleaned_data['public'],
                 }
             data.update(kwargs)
             print(data)

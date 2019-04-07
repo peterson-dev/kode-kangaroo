@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load snippet_tags %}
 {% load staticfiles %}
 
 {% block content %}
@@ -7,6 +8,7 @@
 
 <h2 class="snippet-title">{{snippet.title}}</h2>
 <h3 class="snippet-user">Added by: <a href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a></h3>
+<div class="ml4">Copy Count: {% copyCount snippet.pk %}</div>
 
 
 
