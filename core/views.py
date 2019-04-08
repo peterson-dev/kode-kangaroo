@@ -8,7 +8,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 from core.templatetags import snippet_tags
-from core.filters import SnippetFilter
+from core.filters import SnippetFilter, SnippetListFilter
 
 
 # from django.shortcuts import redirect, render
@@ -21,6 +21,8 @@ class SnippetListView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['form'] = NewSnippetForm
+        context['filter'] = SnippetListFilter(self.request.GET, queryset=self.get_queryset())
+
         return context
         
 
