@@ -53,7 +53,7 @@ class FolderDetailView(LoginRequiredMixin, DetailView):
 
 class SnippetDetailView(LoginRequiredMixin, DetailView):
     model = Snippet
-    template_name = 'core/snippet-detail.html'
+    template_name = 'core/snippet_detail.html'
 
 class SnippetUpdateView(LoginRequiredMixin, UpdateView):
     model = Snippet
