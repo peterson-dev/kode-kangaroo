@@ -16,6 +16,7 @@ psycopg2-binary = "*"
 pyopenssl = "*"
 psycopg2 = "*"
 gunicorn = "*"
+django-filter = "*"
 
 [requires]
 python_version = "3.7"

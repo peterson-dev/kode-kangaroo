@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_http_methods
 from core.templatetags import snippet_tags
+from core.filters import SnippetFilter
 
 
 # from django.shortcuts import redirect, render
@@ -85,12 +86,9 @@ def user_public_snippets(request, pk):
 def all_public_snippets(request):
     template_name = 'core/discover_list.html'
     snippets = Snippet.objects.filter(public=True)
+    snippets_filter = SnippetFilter(request.GET, queryset=snippets)
 
-    context = {
-        'snippets': snippets,
-    }
-
-    return render(request, 'core/discover_list.html', context)
+    return render(request, 'core/discover_list.html', {'filter': snippets_filter})
 
 class SnippetCopyView(LoginRequiredMixin, CreateView):
     model = Snippet
