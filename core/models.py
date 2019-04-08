@@ -19,7 +19,7 @@ class Folder(models.Model):
         super(Folder, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.title
+        return self.title.upper()
 
 class User(AbstractUser):
     '''This model represents the custom user model'''
