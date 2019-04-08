@@ -118,7 +118,7 @@ class Snippet(models.Model):
         super().save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse("snippet_detail", args=[str(self.slug)])
+        return reverse("snippet-detail", args=[str(self.slug)])
     
     def __str__(self):
         return self.title
