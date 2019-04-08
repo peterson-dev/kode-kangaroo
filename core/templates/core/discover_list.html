@@ -1,10 +1,32 @@
 {% extends "base.html" %}
 {% load staticfiles %}
+{% load static %}
 
 {% block content %}
+<div class="ml3 mt0 pa2">
+    <form method="GET" style="font-family: 'Raleway'">
+        <tr class="flex wrap around">
+                <td>{{ filter.form.title__icontains.label_tag }}</td>
+                <td>{{ filter.form.title__icontains }}</td>
+
+                <td>{{ filter.form.post_content__icontains.label_tag }}</td>
+                <td>{{ filter.form.post_content__icontains }}</td>
+
+                <td>{{ filter.form.language.label_tag }}</td>
+                <td>{{ filter.form.language }}</td>
+
+                <td>{{ filter.form.user.label_tag }}</td>
+                <td>{{ filter.form.user }}</td>
+
+                <button class="ml4" type='submit'>Search</button>
+        </tr>
+    </form>
+</div>
 <div class="ml5">
+
+
 <h2 style="font-family: 'Raleway'; ">Public Snippets</h2>
-{% for snippet in snippets.all %}
+{% for snippet in filter.qs %}
 <div class="ml5 f4" style="font-family: 'Raleway'; ">
     
     <div>
