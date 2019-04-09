@@ -18,7 +18,7 @@
                 <td>{{ filter.form.user.label_tag }}</td>
                 <td>{{ filter.form.user }}</td>
 
-                <button class="ml4" type='submit'>Search</button>
+                <button class="font button-snippet dim ml4" type='submit'>Search</button>
         </tr>
     </form>
 </div>
@@ -30,12 +30,12 @@
 <div class="ml5 f4" style="font-family: 'Raleway'; ">
     
     <div>
-        <a class="mb3" style="color: #000000; text-shadow: 2px 2px 2px #F7FF00; text-decoration: none;" href="{% url 'snippet-detail' snippet.slug %}">
+        <a class="detail-links link black body-font mb3" href="{% url 'snippet-detail' snippet.slug %}">
             {{snippet}}
         </a>
         <span class="f6 gray">
-            Added by: <a class="link underline-hover dim"href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a>
-            <span class="f6 purple"> ~ {{snippet.language|upper}}</span>
+            Added by: <a class="link black detail-links dim" href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a>
+            <span class="f6 black"> ~ {{snippet.language|upper}}</span>
         </span>
     </div>
     
@@ -44,12 +44,8 @@
     </div>
     <div class="flex column">
         <div class="f6 mb2">Date added: <em>{{snippet.created_at}}</em></div>
-        <button class="js-copysnippet ml7 f7 br2 shadow-3" style="height: 35px;
-        width: 100px;
-        background-color: #7EE905;
-        font-family: 'Roboto', sans-serif;
-        cursor: pointer;" 
-        value="{{snippet.post_content}}">Copy to Clipboard</button>
+        <button class="js-copysnippet ml7 font button-snippet dim" style="height: 35px;"
+        value="{{snippet.post_content}}">Vault</button>
 
     <!-- <form data-snippetpk="{{ snippet.pk }}" class="copy-snippet" method='POST'
     action="{% url 'copy-snippet' slug=snippet.slug %}">
