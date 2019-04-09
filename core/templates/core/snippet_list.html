@@ -17,20 +17,12 @@
   {% comment %} </div> {% endcomment %}
 
 
-  <form id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
+  <form class="font" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
     {% csrf_token %}
-    <table border="1" class="mb2">
+    <table class="mb2">
       {{ form }}
     </table>
-    <input id="snippet-field" type="submit" class="snippet-field"></input>
-    {% comment %} <button type="submit" 
-    class="mt2" 
-    style="background-color: #7EE905; 
-    padding: 6px 20px; 
-    text-align: center;
-    text-decoration: none;
-    font-size: 1rem;
-    font-family: 'Roboto', sans-serif;">Save</button> {% endcomment %}
+    <input id="snippet-field" type="submit" class="snippet-field font dim button-snippet"></input>
   </form>
 </div>
 <div class="ml5 mt3" style="font-family: 'Raleway';">
@@ -46,44 +38,33 @@
                   <td>{{ filter.form.language.label_tag }}</td>
                   <td>{{ filter.form.language }}</td>
   
-                  <button class="ml4" type='submit'>Search</button>
+                  <button class="font ml4 button-snippet dim" type='submit'>Search</button>
           </tr>
       </form>
   </div>
-  <h3>Your Snippet List</h3>
+  <h3 class="font">Your Snippet List</h3>
     
     {% for snippet in filter.qs %}
       {% if user == snippet.user %}
-      <div id="snippet-{{ snippet.pk }}">
-        <a href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a>
-        <span class="f6 gray">
+      <div class="flex mb1 pa1" id="snippet-{{ snippet.pk }}">
+        <a class="detail-links body-font link black" href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a>
+        <span class="mr2 ml2 f6 gray">
           {% if snippet.public == True %}
           (Public)
           {% else %}
           (Private)
           {% endif %}
         </span>
-        <span class="f6 gray">Copied: {% copyCount snippet.pk %}.</span>
+        <span class="f6 gray">Copied: {% copyCount snippet.pk %}</span>
 
         <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST'
           action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
           {% csrf_token %}
-          <button type='submit' class="font button dim dib"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+          <button type='submit' class="delete-button font button dim dib"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
         </form>
       </div>
 
       {% endif %}
     {% endfor %}
 </div>
-{% comment %} style="font-family: 'Raleway'; text-shadow: 1px 1px 1px #c4c0c0, 3px 3px 5px rgba(255, 255, 0, 0.741);" {% endcomment %}
-
-{% comment %} <div class="mv4">
-  <h2 class="font">Saved Snippets</h2>
-  {% for snippet in snippets.all %}
-  {% include "partials/snippet.html" %}
-  {% empty %}
-  <div>No snippets to show.</div>
-  {% endfor %}
-</div> {% endcomment %}
-
 {% endblock %}

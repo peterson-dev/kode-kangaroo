@@ -8,22 +8,28 @@
 <!--would like to add if statement that if logged in user matches the added by user, the link goes to their profile page, if the user does not match, then go to a lsit view of "public" posts by the added by user or a blank url or dead url.-->
 
 
-<h2 class="snippet-title">{{snippet.title}}</h2>
-<h3 class="snippet-user">Added by: <a href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a></h3>
+<h2 class="snippet-title font">{{snippet.title}}</h2>
+<h3 class="snippet-user body-font">Added by: <a class="link black" href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%} {% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a></h3>
 
 {% comment %} Prism styling {% endcomment %}
-<script src="{% static 'js/prism.js' %}"></script>
-<pre class="line-numbers"><code class=“language-{{snippet.language}}“>{{snippet.post_content}}</code></pre>
+<div class="pl4">
+    <script src="{% static 'js/prism.js' %}"></script>
+    <pre class="line-numbers"><code class=“language-{{snippet.language}}“>{{snippet.post_content}}</code></pre>
+</div>
 
 <div>
     {% if request.user.is_authenticated and user == snippet.user %}
-        <button class="button-snippet" type="button" value="Edit Snippet"><a href="{% url 'snippet-update' slug=snippet.slug %}">Edit</a></button>
-        <button class="delete-snippet button-snippet" type="button" value="Delete Snippet"><a href="{% url 'confirm-snippet-delete' pk=snippet.pk %}">Delete</a></button>
+    <div class="pl4 mt3 mb3">
+        <button class="link font button-snippet dim" type="button" value="Edit Snippet"><a class="link black" href="{% url 'snippet-update' slug=snippet.slug %}">Edit</a></button>
+        <button class="delete-snippet font button-snippet dim" type="button" value="Delete Snippet"><a class="link black" href="{% url 'confirm-snippet-delete' pk=snippet.pk %}">Delete</a></button>
+    </div>
     {% else %}
-        <button class="button-snippet" type="button" value="Copy Snippet"><a href="">Copy</a></button>
+    <div class="pl4 mt3 mb3">
+        <button class="font button-snippet dim" type="button" value="Copy Snippet"><a class="link black" href="">Copy</a></button>
+    </div>
     {% endif %}
 </div>
-<div>
+<div class="pl4">
 {% if snippet.public == True %} 
         (Public)
         <span class="f6 gray">Copied: {% copyCount snippet.pk %}.</span>    

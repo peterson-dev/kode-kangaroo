@@ -8,20 +8,6 @@
     z-index: 1;
 }
 
-/* Adjust button margin-left if there is a better way of doing it */
-/* .button {
-    background-color: #7EE905;
-    border: none;
-    color: black;
-    padding: 6px 20px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    cursor: pointer;
-    margin-left: 0px;
-} */
-
 .edit {
     margin-left: 2rem;
 }
@@ -36,8 +22,17 @@
     font-size: 18px;
     font-family: 'Roboto', sans-serif;
     cursor: pointer;
-    margin-left: 15px;
     margin-bottom: 5px;
+}
+
+.delete-button {
+    border: none;
+    color: red;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
 }
 
 .snippet-box {
@@ -116,4 +111,13 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(359deg); }
+}
+
+.detail-links:hover {
+    background-color: #7EE905;
+    opacity: .8;
+  }
+
+.folder {
+    border-color: #7EE905;
 }
