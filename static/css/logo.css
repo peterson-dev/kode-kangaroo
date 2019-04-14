@@ -1,0 +1,48 @@
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(wall.jpg);
+    background-size: auto 100%;
+  }
+  @font-face {
+    font-family: neon;
+    src: url("../static/fonts/hellodenverdisplayregular_v1.6.ttf") format("truetype"),
+    local("neon");
+  }
+  .neon-wrapper {
+    box-shadow:
+    0 0 0.1vw  0.4vw rgb(241, 241, 240),   
+    0 0 0.4vw  0.6vw rgb(176, 238, 105), 
+    0 0   4vw  0.4vw #7EE905,
+    inset 0 0 1.5vw  0.4vw #7EE905,
+    inset 0 0 0.4vw  0.2vw rgb(195, 247, 135),
+    inset 0 0 0.5vw  0.2vw rgb(249, 252, 246);
+    border-radius: 1.5rem;
+  }
+    /* .neon-text {
+        text-shadow: 
+        .1vw 0vw .25vw #ffd8d8, .2vw 0vw .25vw #ffd8d8, .4vw 0vw .25vw #ffd8d8, 
+        .1vw 0vw   0vw #f25757, .2vw 0vw   0vw #f25757, .4vw 0vw   0vw #f25757,
+        .1vw 0vw  .1vw #f25757, .2vw 0vw  .1vw #f25757, .4vw 0vw  .1vw #f25757,
+        .1vw 0vw   2vw #f25757, .2vw 0vw   2vw #f25757, .4vw 0vw   2vw #f25757, 
+        .1vw 0vw   1vw #e50b0b, .2vw 0vw   1vw #e50b0b, .4vw 0vw   5vw #e50b0b, 
+        .1vw 0vw   5vw #e50b0b, .2vw 0vw  20vw #e50b0b, .4vw 0vw  10vw #e50b0b,
+        .1vw 0vw  10vw #e50b0b, .2vw 0vw  30vw #e50b0b, .4vw 0vw  10vw #e50b0b;
+      } */
+    /* font-size: 14rem;
+    color: #7EE905;
+    padding: 0 3.5rem 0 3.5rem;
+    text-shadow: 
+    .1vw 0vw .25vw rgb(245, 247, 242), .2vw 0vw .25vw rgb(233, 236, 229), .4vw 0vw .25vw rgb(228, 235, 220), 
+    .1vw 0vw   0vw rgb(208, 224, 188), .2vw 0vw   0vw rgb(185, 213, 153), .4vw 0vw   0vw rgb(200, 233, 163),
+    .1vw 0vw  .1vw rgb(185, 224, 140) .2vw 0vw  .1vw rgb(174, 221, 120), .4vw 0vw  .1vw rgb(173, 223, 117),
+    .1vw 0vw   2vw rgb(162, 224, 91), .2vw 0vw   2vw rgb(159, 224, 84), .4vw 0vw   2vw rgb(169, 233, 95), 
+    .1vw 0vw   1vw rgb(156, 233, 68), .2vw 0vw   1vw rgb(146, 230, 50) .4vw 0vw   5vw rgb(155, 231, 67), 
+    .1vw 0vw   5vw rgb(140, 231, 35), .2vw 0vw  20vw rgb(138, 233, 30), .4vw 0vw  10vw rgb(139, 233, 32),
+    .1vw 0vw  10vw #7EE905, .2vw 0vw  30vw #7EE905, .4vw 0vw  10vw #7EE905;
+  } */
+
+  
