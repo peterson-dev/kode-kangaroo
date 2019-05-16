@@ -1,4 +1,4 @@
-from codevault.settings import *
+from kodekangaroo.settings import *
 
 import django_heroku
 
