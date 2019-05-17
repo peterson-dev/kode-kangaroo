@@ -29,7 +29,11 @@ SECRET_KEY = 'qldzl5hcl66sc#x!nact1ql0^7xy9)b0s(8x&=%66a4s01rrg('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'kode-kangaroo.herokuapp.com',
+    'localhost'
+]
 
 
 # Application definition
@@ -160,6 +164,7 @@ AUTHENTICATION_BACKENDS = (
 )
 
 SITE_ID = 1
+
 
 ACCOUNT_ACTIVATION_DAYS = 7
 LOGIN_REDIRECT_URL = '/snippets/'
