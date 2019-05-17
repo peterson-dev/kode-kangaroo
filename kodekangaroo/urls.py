@@ -1,4 +1,4 @@
-"""codevault URL Configuration
+"""kodekangaroo URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -29,6 +29,7 @@ urlpatterns = [
         auth_views.LoginView.as_view(
             template_name='registration/login.html'),
         name='auth_login'),
+    path('accounts/', include('allauth.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

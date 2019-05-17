@@ -1,1 +1,1 @@
-web: gunicorn codevault.wsgi
+web: gunicorn kodekangaroo.wsgi

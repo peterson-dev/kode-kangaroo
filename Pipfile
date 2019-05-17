@@ -17,6 +17,7 @@ pyopenssl = "*"
 psycopg2 = "*"
 gunicorn = "*"
 django-filter = "*"
+django-allauth = "*"
 
 [requires]
 python_version = "3.7"
