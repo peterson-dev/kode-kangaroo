@@ -4,9 +4,9 @@ from core.models import Snippet
 
 class NewSnippetForm(forms.Form):
     title = forms.CharField(
-        label='Title',
         max_length=55,
-        widget=forms.TextInput(attrs={'required': True}),
+        widget=forms.TextInput(attrs={'placeholder': 'title', 'required': True}),
+        label='',
     )
     post_content = forms.CharField(
         label='',
@@ -14,15 +14,15 @@ class NewSnippetForm(forms.Form):
         widget=forms.Textarea(attrs={'placeholder': 'add a new snippet','required': True}),
     )
     language = forms.ChoiceField(
-        label='Language',
         choices=Snippet.LANG_CHOICES, 
         required=True,
+        label='',
     )
     public = forms.BooleanField(
         initial=False,
         required=False,
-        label='Public?',
-        widget=forms.CheckboxInput
+        label='make public',
+        widget=forms.CheckboxInput(attrs={'title': 'public?'}),
     )
 
     def save(self, user, *args, **kwargs):
