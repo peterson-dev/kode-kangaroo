@@ -35,9 +35,7 @@
         
           <p class="white">{% trans "Forgot your password?" %} <a class="nav_font_color link hover-white dib" href="{% url 'auth_password_reset' %}">{% trans "Reset it." %}</a></p>
           <p class="white">{% trans "Not a member?" %} <a class="nav_font_color link hover-white dib" href="{% url 'registration_register' %}">{% trans "Register." %}</a></p>
-          <p>or</p>
 
-          <p><a href="{% provider_login_url 'github' %}">Login with github</a></p>
         </div>
       </div>
     </div>

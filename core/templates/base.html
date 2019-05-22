@@ -29,7 +29,6 @@
                     title="Profile page">{{ request.user.username }}</a>
                 <span class="link hover-white dib mr3">|</span></li>
                 <li><a class="nav_font_color pt3 pb3 link hover-white dib mr3" href="{% url 'auth_logout' %}">Logout</a></li>
-                {% endif %}
             </ul>
         </nav>
     </div>
@@ -42,6 +41,8 @@
             {% show_user_folders request.user %}
             {% endblock %}
         </div>
+        {% endif %}
+
         <div>
             {% block content %}{% endblock %}
         </div>
