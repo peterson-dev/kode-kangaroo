@@ -35,7 +35,7 @@
         </a>
         <span class="f6 gray">
             Added by: <a class="link black detail-links dim" href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a>
-            <span class="f6 black"> ~ {{snippet.language|upper}}</span>
+            <span class="f6 black"> ~ {{snippet.get_language_display|upper}}</span>
         </span>
     </div>
     

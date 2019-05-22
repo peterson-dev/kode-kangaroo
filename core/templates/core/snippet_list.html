@@ -44,6 +44,8 @@
       {% if user == snippet.user %}
       <div class="flex mb1 pa1" id="snippet-{{ snippet.pk }}">
         <a class="detail-links body-font link black" href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a>
+        <span class=" gray"> ~ {{snippet.get_language_display|upper}}</span>
+
         <span class="mr2 ml2 f6 gray">
           {% if snippet.public == True %}
           (Public)
