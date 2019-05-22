@@ -22,18 +22,18 @@
 {% block content %}
 
   <div class="bg-black min-vh-100 nav_font_color">
-    <div class="pa4 center mw6">
+    <div class="login-container pa3">
       <div class="tc">
         <h1 class="font f-headline lh-solid">Kode<br>Kangaroo</h1>
         <h2 class="logo-font-size font logo nav_font_color">&lt;/&gt;</h2>
         <div class="body-font">
           <p class="white f3">A code snippet manager</p>
-          <form style="margin-right: 4rem; " class="pure-form pure-form-aligned" method="post" action="">
-              <div class="pure-control-group">
+          <form class="login-child pure-form pure-form-aligned" method="post" action="">
+            <div style="width: 90%;" class="pure-control-group">
             {% csrf_token %}
             {{ form.as_p }}
-          </div>
-            <input style="margin-left: 4rem;" class="pure-button" type="submit" value="{% trans 'Log in' %}" />
+            </div>
+            <input style="max-width: 6.4rem;" class="button-success pure-button pure-input-1 hover-white " type="submit" value="{% trans 'Log in' %}" />
             <input type="hidden" name="next" value="{{ next }}" />
 
           </form>

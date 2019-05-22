@@ -1,5 +1,19 @@
+.button-success {
+    background: rgb(155, 230, 69); /* this is a green */
+}
 
+.login-child {
+    width: 66%;
+    margin: auto;
+}
+
+.login-container {
+    margin: auto;
+    width: 100%;
+}
 /* 
+ style="margin-right: 5rem; "
+ style="margin-left: 5rem;" 
 styles post 2019/5/1
 */
 #cover_image_layer {
