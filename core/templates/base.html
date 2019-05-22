@@ -22,11 +22,11 @@
 <header class="mb0">
     <div class="font mb0">
         <nav class="tracked">
-            <ul class="pa3 list pl0 mt0 flex flex-wrap bg-near-black nav_font_color">
+            <ul class="pa3 list pl0 mt0 flex space-between flex-wrap bg-near-black nav_font_color">
                 <li class="logo logo_font nav_font_color ml3 pa2 link hover-white dib mr3">&lt;/&gt;</li>
                 <li> <a class="nav_font_color pa3 link hover-white dib mr3" href="{% url 'snippet_list' %}">KodeKangaroo</a></li>
-                <li><a class="nav_font_color pa3 link hover-white dib mr3" href="{% url 'discover_list' %}">Discover</a></li>
-                <li><a class="nav_font_color pt3 pb3 ml0 link hover-white dib mr3" href="{% url 'snippet_list' %}" method="POST"
+                <li style="flex-grow: 2;"><a class="nav_font_color pa3 link hover-white dib mr3" href="{% url 'discover_list' %}">Discover</a></li>
+                <li><a class="nav_font_color pt3 pb3 ml3 link hover-white dib mr3" href="{% url 'snippet_list' %}" method="POST"
                     title="Profile page">{{ request.user.username }}</a>
                 <span class="link hover-white dib mr3">|</span></li>
                 <li><a class="nav_font_color pt3 pb3 link hover-white dib mr3" href="{% url 'auth_logout' %}">Logout</a></li>

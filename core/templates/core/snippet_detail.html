@@ -11,7 +11,6 @@
 <h2 class="snippet-title font">{{snippet.title}}</h2>
 <h3 class="snippet-user body-font">Added by: <a class="link black" href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%} {% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a></h3>
 
-{% comment %} Prism styling {% endcomment %}
 <div class="pl4">
     <script src="{% static 'js/prism.js' %}"></script>
     <pre class="line-numbers"><code class=“language-{{snippet.language}}“>{{snippet.post_content}}</code></pre>
