@@ -9,44 +9,34 @@
   </nav>
 
   <h1 class="font">Create Code Snippet:</h1>
-  {% comment %} <textarea class="snippet_input"></textarea> {% endcomment %}
-  {% comment %} <br> {% endcomment %}
-  {% comment %} <div class="ml5"> {% endcomment %}
-  {% comment %} <div class="draggable_snippets"> {% endcomment %}
-  {% comment %} </div> {% endcomment %}
-  {% comment %} </div> {% endcomment %}
 
-
-  <form class="font pure-form pure-form-stacked" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
+  <form class="font pure-form pure-form-aligned" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
     
     {% csrf_token %}
-    <table class="mb2">
-      {{ form }}
+    <table>
+      {{ form.as_p }}
     </table>
-    <input id="snippet-field" type="submit" class="snippet-field font dim button-snippet"></input>
+    <input id="snippet-field" type="submit" class="font button-success pure-button"></input>
   </form>
 </div>
 <div class="ml5 mt3" style="font-family: 'Raleway';">
   <div class="mt0">
-      <form class="" method="GET" style="font-family: 'Raleway'">
-          <table class="flex wrap around pure-table pure-table-horizontal">
+    <form class="" method="GET" style="font-family: 'Raleway'">
+      <table class="flex wrap around pure-table pure-table-horizontal">
+        <tr class="pure-form pure-form-stacked">
+          <td>{{ filter.form.title__icontains.label_tag }}</td>
+          <td>{{ filter.form.title__icontains }}</td>
 
-          <tr class="flex wrap around">
-                  <td>{{ filter.form.title__icontains.label_tag }}</td>
-                  <td>{{ filter.form.title__icontains }}</td>
-  
-                  <td>{{ filter.form.post_content__icontains.label_tag }}</td>
-                  <td>{{ filter.form.post_content__icontains }}</td>
-  
-                  <td>{{ filter.form.language.label_tag }}</td>
-                  <td>{{ filter.form.language }}</td>
-  
-                  
-          </tr>
-          </table>
-          <button class="font button-snippet dim" type='submit'>Search</button>
+          <td>{{ filter.form.post_content__icontains.label_tag }}</td>
+          <td>{{ filter.form.post_content__icontains }}</td>
 
-      </form>
+          <td>{{ filter.form.language.label_tag }}</td>
+          <td>{{ filter.form.language }}</td>
+          
+          <td><button class="font button-success pure-button" type="submit">Go</button></td>
+        </tr>
+      </table>
+    </form>
   </div>
   <h3 class="font">Your Snippet List</h3>
     
