@@ -8,15 +8,15 @@ class NewSnippetForm(forms.Form):
         max_length=55,
         widget=forms.TextInput(attrs={'required': True}),
     )
-    language = forms.ChoiceField(
-        label='Language',
-        choices=Snippet.LANG_CHOICES, 
-        required=True,
-    )
     post_content = forms.CharField(
         label='',
         max_length=1000,
         widget=forms.Textarea(attrs={'placeholder': 'add a new snippet','required': True}),
+    )
+    language = forms.ChoiceField(
+        label='Language',
+        choices=Snippet.LANG_CHOICES, 
+        required=True,
     )
     public = forms.BooleanField(
         initial=False,
