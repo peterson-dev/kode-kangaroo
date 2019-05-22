@@ -17,7 +17,8 @@
   {% comment %} </div> {% endcomment %}
 
 
-  <form class="font" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
+  <form class="font pure-form pure-form-stacked" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
+    
     {% csrf_token %}
     <table class="mb2">
       {{ form }}
@@ -27,7 +28,9 @@
 </div>
 <div class="ml5 mt3" style="font-family: 'Raleway';">
   <div class="mt0">
-      <form method="GET" style="font-family: 'Raleway'">
+      <form class="" method="GET" style="font-family: 'Raleway'">
+          <table class="flex wrap around pure-table pure-table-horizontal">
+
           <tr class="flex wrap around">
                   <td>{{ filter.form.title__icontains.label_tag }}</td>
                   <td>{{ filter.form.title__icontains }}</td>
@@ -38,8 +41,11 @@
                   <td>{{ filter.form.language.label_tag }}</td>
                   <td>{{ filter.form.language }}</td>
   
-                  <button class="font ml4 button-snippet dim" type='submit'>Search</button>
+                  
           </tr>
+          </table>
+          <button class="font button-snippet dim" type='submit'>Search</button>
+
       </form>
   </div>
   <h3 class="font">Your Snippet List</h3>
