@@ -33,7 +33,7 @@
             {% csrf_token %}
             {{ form.as_p }}
             </div>
-            <input style="max-width: 6.4rem;" class="button-success pure-button pure-input-1 hover-white " type="submit" value="{% trans 'Log in' %}" />
+            <input style="max-width: 6.4rem;" class="button-success pure-button pure-input-1 hover-white" type="submit" value="{% trans 'Log in' %}" />
             <input type="hidden" name="next" value="{{ next }}"/>
           </form>
           <p class="white">{% trans "Forgot your password?" %} <a class="nav_font_color link hover-white dib" href="{% url 'auth_password_reset' %}">{% trans "Reset it." %}</a></p>

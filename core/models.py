@@ -52,12 +52,10 @@ class Snippet(models.Model):
     '''This model represents the users post'''
     LANG_CHOICES = (
    #('actual value for model', 'human-readable name')
-    ('html', 'HTML'),
-    ('css', 'CSS'),
-    ('js', 'Javascript'),
     ('bash', 'Bash'),
     ('basic', 'Basic'),
     ('c', 'C'),
+    ('css', 'CSS'),
     ('csharp', 'C#'),
     ('cpp', 'C++'),
     ('coffee', 'CoffeeScript'),
@@ -68,7 +66,9 @@ class Snippet(models.Model):
     ('git', 'Git'),
     ('go', 'Go'),
     ('graphql', 'GraphQL'),
+    ('html', 'HTML'),
     ('java', 'Java'),
+    ('js', 'Javascript'),
     ('json', 'JSON'),
     ('monkey', 'Monkey'),
     ('objectivec', 'Objective-C'),
