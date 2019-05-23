@@ -6,13 +6,14 @@
 <head>
     <title>KodeKangaroo</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/prism.css' %}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <script src="{% static 'js/js.cookie.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
     <script src="https://use.fontawesome.com/3c73ccdfcf.js"></script>
@@ -24,17 +25,17 @@
         <div class="font mb0">
             <nav class="tracked">
                 <ul class="pa3 list pl0 mt0 flex space-between flex-wrap bg-near-black nav_font_color">
-                    <li class="logo logo_font nav_font_color pa2 link hover-white dib mr2">&lt;/&gt;</li>
-                    <li> <a class="nav_font_color pa3 link hover-white dib mr2" href="{% url 'snippet_list' %}">KodeKangaroo</a></li>
-                    <li><a class="nav_font_color pa3 link hover-white dib mr3" href="{% url 'discover_list' %}">Discover</a></li>
-                    <li class="ml2 mt2" style="flex-grow: 2;">
+                    <li class="logo logo_font nav_font_color pa2 hover-white dib mr3"><a class="pl2 nav_font_color hover-white dib" href="{% url 'snippet_list' %}">&lt;/&gt;</a></li>
+                    <li> <a class="nav_font_color pa3 hover-white dib mr2" href="{% url 'snippet_list' %}">KodeKangaroo <i class="fas fa-home"></i></a></li>
+                    <li><a class="nav_font_color pa3 hover-white dib mr3" href="{% url 'discover_list' %}">Discover <i class="fas fa-globe-americas"></i></a></li>
+                    <li class="ml3 mt2" style="flex-grow: 2;">
                         <div>
                             <button class="btn button-success hover-white" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                Create Code Snippet
+                                Create Snippet <i class="fas fa-plus-square"></i>
                             </button>
                             <div class="collapse" id="collapseExample">
                                 <div class="card card-body" style="max-width: 25rem;">
-                                    <form class="font pure-form pure-form-aligned" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
+                                    <form class="font pure-form pure-form-aligned black" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
                                         {% csrf_token %}
                                         <table>
                                             {{ form.as_p }}
@@ -46,9 +47,9 @@
                         </div>
                     </li>
     
-                    <li><a class="nav_font_color pt3 pb3 ml3 link hover-white dib mr3" href="{% url 'snippet_list' %}" method="POST"
+                    <li><a class="nav_font_color pt3 pb3 ml3 hover-white dib mr3" href="{% url 'snippet_list' %}" method="POST"
                         title="Profile page">{{ request.user.username }}</a>
-                    <span class="link hover-white dib mr3">|</span></li>
+                    <span class="hover-white dib mr3">|</span></li>
                     <li><a class="nav_font_color pt3 pb3 link hover-white dib mr3" href="{% url 'auth_logout' %}">Logout</a></li>
                 </ul>
             </nav>
