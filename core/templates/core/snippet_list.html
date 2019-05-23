@@ -3,64 +3,76 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="ml5">
-  <nav>
+<div class="ml5 accordion" id="accordionExample">
+    <div class="mb0">
 
-  </nav>
+        <h2 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            Filter
+          </button>
+        </h2>
 
-  <h1 class="font">Create Code Snippet:</h1>
-
-  <form class="font pure-form pure-form-aligned" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
-    
-    {% csrf_token %}
-    <table>
-      {{ form.as_p }}
-    </table>
-    <input id="snippet-field" type="submit" class="font button-success pure-button hover-white"></input>
-  </form>
-</div>
-<div class="ml5 mt3" style="font-family: 'Raleway';">
-  <div class="mt0">
-    <form class="" method="GET" style="font-family: 'Raleway'">
-      <table class="flex wrap around pure-table pure-table-horizontal">
-        <tr class="pure-form pure-form-stacked">
-          <td>{{ filter.form.title__icontains.label_tag }}</td>
-          <td>{{ filter.form.title__icontains }}</td>
-
-          <td>{{ filter.form.post_content__icontains.label_tag }}</td>
-          <td>{{ filter.form.post_content__icontains }}</td>
-
-          <td>{{ filter.form.language.label_tag }}</td>
-          <td>{{ filter.form.language }}</td>
-
-          <td><button class="font button-success pure-button hover-white" type="submit">Go</button></td>
-        </tr>
-      </table>
-    </form>
-  </div>
-  <h3 class="font">Your Snippet List</h3>
-    
-    {% for snippet in filter.qs %}
-      {% if user == snippet.user %}
-      <div class="flex mb1 pa1" id="snippet-{{ snippet.pk }}">
-        <a class="detail-links body-font link black" href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a>
-        <span class=" gray"> ~ {{snippet.get_language_display|upper}}</span>
-
-        <span class="mr2 ml2 f6 gray">
-          {% if snippet.public == True %}
-          (Public)
-          {% else %}
-          (Private)
-          {% endif %}
-        </span>
-        <span class="f6 gray">Copied: {% copyCount snippet.pk %}</span>
-
-        <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST'
-          action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
-          {% csrf_token %}
-          <button type='submit' class="delete-button font button dim dib"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-        </form>
+  
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+            <div class="mt0">
+                <form class="" method="GET" style="font-family: 'Raleway'">
+                  <table class="flex wrap around pure-table pure-table-horizontal">
+                    <tr class="pure-form pure-form-stacked">
+                      <td>{{ filter.form.title__icontains.label_tag }}</td>
+                      <td>{{ filter.form.title__icontains }}</td>
+            
+                      <td>{{ filter.form.post_content__icontains.label_tag }}</td>
+                      <td>{{ filter.form.post_content__icontains }}</td>
+            
+                      <td>{{ filter.form.language.label_tag }}</td>
+                      <td>{{ filter.form.language }}</td>
+            
+                      <td><button class="font button-success pure-button hover-white" type="submit">Go</button></td>
+                    </tr>
+                  </table>
+                </form>
+              </div>
+        </div>
       </div>
+    </div>
+</div>
+  <h3 class="font">Your Snippet List</h3>
+  {% for snippet in filter.qs %}
+    {% if user == snippet.user %}
+      <div class="container">
+          <div class="row">
+              <div class="col-sm">
+                <div class="card" style="width: 26rem;">
+                  <script src="{% static 'js/prism.js' %}"></script>
+                  <a class="detail-links link black body-font mb3" href="{% url 'snippet-detail' snippet.slug %}">
+                      <pre class="line-numbers js-snippetcontent ma2 f5 w-100 h-auto pa2"><code class=“language-{{snippet.language}}“>{{snippet.post_content}}</code></pre>
+                  </a>
+                  <div class="card-body">
+                      <div class="flex mb1 pa1" id="snippet-{{ snippet.pk }}">
+                        <a class="detail-links body-font link black" href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a>
+                        <span class=" gray"> ~ {{snippet.get_language_display|upper}}</span>
+                
+                        <span class="mr2 ml2 f6 gray">
+                          {% if snippet.public == True %}
+                          (Public)
+                          {% else %}
+                          (Private)
+                          {% endif %}
+                        </span>
+                        <span class="f6 gray">Copied: {% copyCount snippet.pk %}</span>
+                
+                        <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST'
+                          action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
+                          {% csrf_token %}
+                          <button type='submit' class="delete-button font button dim dib"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                        </form>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
       {% endif %}
     {% endfor %}
