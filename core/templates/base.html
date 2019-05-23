@@ -6,6 +6,7 @@
 <head>
     <title>KodeKangaroo</title>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
@@ -20,22 +21,41 @@
 
 {% if request.user.is_authenticated %}
 <header class="mb0">
-    <div class="font mb0">
-        <nav class="tracked">
-            <ul class="pa3 list pl0 mt0 flex space-between flex-wrap bg-near-black nav_font_color">
-                <li class="logo logo_font nav_font_color ml3 pa2 link hover-white dib mr3">&lt;/&gt;</li>
-                <li> <a class="nav_font_color pa3 link hover-white dib mr3" href="{% url 'snippet_list' %}">KodeKangaroo</a></li>
-                <li style="flex-grow: 2;"><a class="nav_font_color pa3 link hover-white dib mr3" href="{% url 'discover_list' %}">Discover</a></li>
-                <li><a class="nav_font_color pt3 pb3 ml3 link hover-white dib mr3" href="{% url 'snippet_list' %}" method="POST"
-                    title="Profile page">{{ request.user.username }}</a>
-                <span class="link hover-white dib mr3">|</span></li>
-                <li><a class="nav_font_color pt3 pb3 link hover-white dib mr3" href="{% url 'auth_logout' %}">Logout</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+        <div class="font mb0">
+            <nav class="tracked">
+                <ul class="pa3 list pl0 mt0 flex space-between flex-wrap bg-near-black nav_font_color">
+                    <li class="logo logo_font nav_font_color pa2 link hover-white dib mr2">&lt;/&gt;</li>
+                    <li> <a class="nav_font_color pa3 link hover-white dib mr2" href="{% url 'snippet_list' %}">KodeKangaroo</a></li>
+                    <li><a class="nav_font_color pa3 link hover-white dib mr3" href="{% url 'discover_list' %}">Discover</a></li>
+                    <li class="ml2 mt2" style="flex-grow: 2;">
+                        <div>
+                            <button class="btn button-success hover-white" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                Create Code Snippet
+                            </button>
+                            <div class="collapse" id="collapseExample">
+                                <div class="card card-body" style="max-width: 25rem;">
+                                    <form class="font pure-form pure-form-aligned" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
+                                        {% csrf_token %}
+                                        <table>
+                                            {{ form.as_p }}
+                                        </table>
+                                        <input id="snippet-field" type="submit" class="font button-success pure-button hover-white"></input>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+    
+                    <li><a class="nav_font_color pt3 pb3 ml3 link hover-white dib mr3" href="{% url 'snippet_list' %}" method="POST"
+                        title="Profile page">{{ request.user.username }}</a>
+                    <span class="link hover-white dib mr3">|</span></li>
+                    <li><a class="nav_font_color pt3 pb3 link hover-white dib mr3" href="{% url 'auth_logout' %}">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-<body class="mt0">
+<body class="mt0 ">
     <div class="flex wrap mt0">
         <div class="">
             {% block sidebar %}
@@ -44,10 +64,13 @@
         </div>
         {% endif %}
 
-        <div>
+        <div class="w-100">
             {% block content %}{% endblock %}
         </div>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 
 </html>
