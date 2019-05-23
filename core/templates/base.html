@@ -25,25 +25,26 @@
             <nav class="tracked">
                 <ul class="pa3 list pl0 mt0 flex space-between flex-wrap bg-near-black nav_font_color">
                     <li class="logo logo_font nav_font_color pa2 link hover-white dib mr2">&lt;/&gt;</li>
-                    <li> <a class="nav_font_color pa3 link hover-white dib mr3" href="{% url 'snippet_list' %}">KodeKangaroo</a></li>
-                    <li ><a class="nav_font_color pa3 link hover-white dib mr3" href="{% url 'discover_list' %}">Discover</a></li>
-                    <li style="flex-grow: 2;" ><div class="mt2 mr2">
+                    <li> <a class="nav_font_color pa3 link hover-white dib mr2" href="{% url 'snippet_list' %}">KodeKangaroo</a></li>
+                    <li><a class="nav_font_color pa3 link hover-white dib mr3" href="{% url 'discover_list' %}">Discover</a></li>
+                    <li class="ml2 mt2" style="flex-grow: 2;">
+                        <div>
                             <button class="btn button-success hover-white" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                                 Create Code Snippet
-                              </button>
-                            </p>
+                            </button>
                             <div class="collapse" id="collapseExample">
-                              <div class="card card-body" style="max-width: 25rem;">
-                                  <form class="font pure-form pure-form-aligned" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
-                                      {% csrf_token %}
-                                      <table>
-                                        {{ form.as_p }}
-                                      </table>
-                                      <input id="snippet-field" type="submit" class="font button-success pure-button hover-white"></input>
+                                <div class="card card-body" style="max-width: 25rem;">
+                                    <form class="font pure-form pure-form-aligned" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
+                                        {% csrf_token %}
+                                        <table>
+                                            {{ form.as_p }}
+                                        </table>
+                                        <input id="snippet-field" type="submit" class="font button-success pure-button hover-white"></input>
                                     </form>
-                              </div>
+                                </div>
                             </div>
-                          </div></li>
+                        </div>
+                    </li>
     
                     <li><a class="nav_font_color pt3 pb3 ml3 link hover-white dib mr3" href="{% url 'snippet_list' %}" method="POST"
                         title="Profile page">{{ request.user.username }}</a>
@@ -54,7 +55,7 @@
         </div>
     </header>
 
-<body class="mt0">
+<body class="mt0 ">
     <div class="flex wrap mt0">
         <div class="">
             {% block sidebar %}
@@ -63,7 +64,7 @@
         </div>
         {% endif %}
 
-        <div>
+        <div class="w-100">
             {% block content %}{% endblock %}
         </div>
     </div>
