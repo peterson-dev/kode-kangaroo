@@ -89,34 +89,13 @@ class Snippet(models.Model):
     title = models.CharField(max_length=50, null=False, blank=False)
     language = models.CharField(max_length=420, choices=LANG_CHOICES)
     post_content = models.TextField(max_length=5000)
-    slug = models.SlugField()
     created_at = models.DateTimeField(auto_now=True)
     source_id = models.CharField(max_length=10, null=True, blank=True)
     public=models.BooleanField(default=False)
 
     class Meta:
         ordering = ['-created_at']
-
-    def set_slug(self):
-        '''Creates a unique slug for every post'''
-        if self.slug:
-            return
-        base_slug = slugify(self.title)
-
-        slug = base_slug
-        n = 0
-
-        while User.objects.filter(slug=slug).count():
-            n += 1
-            slug = base_slug + '-' + str(n)
-        
-        self.slug = slug
     
-    def save(self, *args, **kwargs):
-        '''Hides slug field in admin- saves slug to use in url'''
-        self.set_slug()
-        super().save(*args, **kwargs)
-
     def get_absolute_url(self):
         return reverse("snippet-detail", args=[str(self.slug)])
     

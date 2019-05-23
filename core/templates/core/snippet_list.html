@@ -46,14 +46,14 @@
                   <div class="card mb-3" style="width: 35rem; margin: 0;">
                     <div class="card-header" style="overflow: auto; padding: 0.2rem;">
                         <div class="flex mb1 pa1" id="snippet-{{ snippet.pk }}">
-                            <a class="detail-links body-font link black" href="{% url 'snippet-detail' slug=snippet.slug %}">{{ snippet }}</a>
+                            <a class="detail-links body-font link black" href="{% url 'snippet-detail' pk=snippet.pk %}">{{ snippet }}</a>
                         </div>
                     </div>
 
                     <div class="card-body" style="max-height: 20rem; overflow: auto; padding: 0;">
 
                     <script src="{% static 'js/prism.js' %}"></script>
-                    <a class="detail-links link black body-font mb3" href="{% url 'snippet-detail' snippet.slug %}">
+                    <a class="detail-links link black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">
                         <pre class="line-numbers js-snippetcontent pa2"><code class=“language-{{snippet.language}}“>{{snippet.post_content}}</code></pre>
                     </a>
                     </div>

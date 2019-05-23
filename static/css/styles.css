@@ -11,11 +11,22 @@
     margin: auto;
     width: 100%;
 }
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
 /* 
- style="margin-right: 5rem; "
- style="margin-left: 5rem;" 
-styles post 2019/5/1
+    styles above posted after 2019/5/1
 */
+
 #cover_image_layer {
     padding: 10px;
     position: absolute;
@@ -64,9 +75,9 @@ styles post 2019/5/1
     margin-left: 2rem;
 }
 
-.snippet-title, .snippet-languages, .snippet-created {
+/* .snippet-title, .snippet-languages, .snippet-created {
     margin-left: 2rem;
-}
+} */
 
 .font {
     font-family: 'Exo', sans-serif;

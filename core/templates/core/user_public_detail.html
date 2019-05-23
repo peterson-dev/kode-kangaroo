@@ -7,7 +7,7 @@
 
     <div class="ml5 f4" style="font-family: 'Raleway'; ">
         <h4>Snippets:</h4>
-                <div><a style="color: #000000; text-shadow: 2px 2px 2px #F7FF00; text-decoration: none;" href="{% url 'snippet-detail' snippet.slug %}">{{snippet}}</a></div>
+                <div><a style="color: #000000; text-shadow: 2px 2px 2px #F7FF00; text-decoration: none;" href="{% url 'snippet-detail' snippet.pk %}">{{snippet}}</a></div>
                 <div class="ma2 f5">
                 {{snippet.post_content|truncatewords:15}}
                 </div>

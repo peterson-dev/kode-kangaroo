@@ -19,7 +19,7 @@
 <div>
     {% if request.user.is_authenticated and user == snippet.user %}
     <div class="pl4 mt3 mb3">
-        <button class="link font button-snippet dim" type="button" value="Edit Snippet"><a class="link black" href="{% url 'snippet-update' slug=snippet.slug %}">Edit</a></button>
+        <button class="link font button-snippet dim" type="button" value="Edit Snippet"><a class="link black" href="{% url 'snippet-update' pk=snippet.pk %}">Edit</a></button>
         <button class="delete-snippet font button-snippet dim" type="button" value="Delete Snippet"><a class="link black" href="{% url 'confirm-snippet-delete' pk=snippet.pk %}">Delete</a></button>
     </div>
     {% else %}

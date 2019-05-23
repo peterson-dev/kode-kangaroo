@@ -29,14 +29,14 @@
 {% for snippet in filter.qs %}
 <div class="ml5 f4" style="font-family: 'Raleway'; ">
 
-    <a class="detail-links link black body-font mb3" href="{% url 'snippet-detail' snippet.slug %}">{{snippet}}</a>
+    <a class="detail-links link black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">{{snippet}}</a>
     <span class="f6 gray">
         Added by: <a class="link black detail-links dim" href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a>
         <span class="f6 black"> ~ {{snippet.get_language_display|upper}}</span>
     </span>
 
     <script src="{% static 'js/prism.js' %}"></script>
-    <a class="detail-links link black body-font mb3" href="{% url 'snippet-detail' snippet.slug %}">
+    <a class="detail-links link black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">
         <pre class="line-numbers js-snippetcontent ma2 f5 w-100 h-auto pa2"><code class=“language-{{snippet.language}}“>{{snippet.post_content}}</code></pre>
     </a>
     
@@ -46,7 +46,7 @@
         value="{{snippet.post_content}}">save</button>
 
     <!-- <form data-snippetpk="{{ snippet.pk }}" class="copy-snippet" method='POST'
-    action="{% url 'copy-snippet' slug=snippet.slug %}">
+    action="{% url 'copy-snippet' pk=snippet.pk %}">
     {% csrf_token %}
     <button type='submit' class="font button dim dib">copy</i></button> -->
 
