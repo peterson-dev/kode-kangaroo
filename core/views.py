@@ -86,11 +86,11 @@ def user_public_snippets(request, pk):
 
 
 def all_public_snippets(request):
-    template_name = 'core/discover_list.html'
+    template_name = 'core/kommunity_list.html'
     snippets = Snippet.objects.filter(public=True)
     snippets_filter = SnippetFilter(request.GET, queryset=snippets)
 
-    return render(request, 'core/discover_list.html', {'filter': snippets_filter})
+    return render(request, 'core/kommunity_list.html', {'filter': snippets_filter})
 
 class SnippetCopyView(LoginRequiredMixin, CreateView):
     model = Snippet
