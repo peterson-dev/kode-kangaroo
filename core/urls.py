@@ -9,6 +9,6 @@ urlpatterns = [
     path('folders/<int:pk>/', views.FolderDetailView.as_view(), name='folder-contents'),
     path('snippet/<int:pk>/delete', views.SnippetDeleteView.as_view(), name='confirm-snippet-delete'),
     path('snippets/user/<int:pk>', views.user_public_snippets, name = 'user_snippets'),
-    path('snippets/kommunity', views.all_public_snippets, name = 'kommunity_list'),
+    path('snippets/kommunity', views.AllPublicSnippets.as_view(), name = 'kommunity_list'),
     path('snippet/<int:pk>/copy', views.SnippetCopyView.as_view(), name='copy-snippet'),
 ]
