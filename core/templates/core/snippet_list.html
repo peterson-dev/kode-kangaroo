@@ -44,18 +44,19 @@
     {% if user == snippet.user %}
               <div class="col-md col-md" style="padding: 0;">
                   <div class="card mb-3" style="width: 35rem; margin: 0;">
-                    <div class="card-header" style="overflow: auto; padding: 0.2rem;">
+                    <div class="card-header" data-toggle="tooltip" data-placement="left" title="click me" style="overflow: auto; padding: 0.2rem;">
                         <div class="flex mb1 pa1" id="snippet-{{ snippet.pk }}">
                             <a class="detail-links body-font link black" href="{% url 'snippet-detail' pk=snippet.pk %}">{{ snippet }}</a>
                         </div>
                     </div>
 
                     <div class="card-body" style="max-height: 20rem; overflow: auto; padding: 0;">
+                        <!-- <div class="card-body" style="overflow: auto; padding: 0;"> -->
 
                     <script src="{% static 'js/prism.js' %}"></script>
-                    <a class="detail-links link black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">
+                    <!-- <a class="detail-links link black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}"> -->
                         <pre class="line-numbers js-snippetcontent pa2"><code class=“language-{{snippet.language}}“>{{snippet.post_content}}</code></pre>
-                    </a>
+                    <!-- </a> -->
                     </div>
                     <div class="flex card-footer text-muted">
 
@@ -73,7 +74,7 @@
                       <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST'
                         action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
                         {% csrf_token %}
-                        <button type='submit' class="delete-button font button dim dib"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                        <button type='submit' class="delete-button font button dim dib" data-toggle="tooltip" data-placement="left" data-html="true" title="Are you sure you want to <b>delete?<b>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
                       </form>
                   </div>
                 </div>

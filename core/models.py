@@ -86,9 +86,9 @@ class Snippet(models.Model):
     )
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    title = models.CharField(max_length=50, null=False, blank=False)
+    title = models.CharField(max_length=150, null=False, blank=False)
     language = models.CharField(max_length=420, choices=LANG_CHOICES)
-    post_content = models.TextField(max_length=5000)
+    post_content = models.TextField(max_length=15000)
     created_at = models.DateTimeField(auto_now=True)
     source_id = models.CharField(max_length=10, null=True, blank=True)
     public=models.BooleanField(default=False)
