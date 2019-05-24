@@ -8,7 +8,8 @@
 }
 
 .login-container {
-    margin: 30% auto;
+    margin: auto;
+    padding-top: 5rem;
     width: 100%;
 }
 
