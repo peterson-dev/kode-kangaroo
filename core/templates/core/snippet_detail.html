@@ -9,7 +9,7 @@
 
 
 <h2 class="snippet-title font">{{snippet.title}}</h2>
-<h3 class="snippet-user body-font">Added by: <a class="link black" href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%} {% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a></h3>
+<h3 class="snippet-user body-font">Added by: <a class="black" href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%} {% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a></h3>
 
 <div class="pl4">
     <script src="{% static 'js/prism.js' %}"></script>
@@ -19,12 +19,12 @@
 <div>
     {% if request.user.is_authenticated and user == snippet.user %}
     <div class="pl4 mt3 mb3">
-        <button class="link font button-snippet dim" type="button" value="Edit Snippet"><a class="link black" href="{% url 'snippet-update' pk=snippet.pk %}">Edit</a></button>
-        <button class="delete-snippet font button-snippet dim" type="button" value="Delete Snippet"><a class="link black" href="{% url 'confirm-snippet-delete' pk=snippet.pk %}">Delete</a></button>
+        <button class="font button-snippet dim" type="button" value="Edit Snippet"><a class="black" href="{% url 'snippet-update' pk=snippet.pk %}">Edit</a></button>
+        <button class="delete-snippet font button-snippet dim" type="button" value="Delete Snippet"><a class="black" href="{% url 'confirm-snippet-delete' pk=snippet.pk %}">Delete</a></button>
     </div>
     {% else %}
     <div class="pl4 mt3 mb3">
-        <button class="font button-snippet dim" type="button" value="Copy Snippet"><a class="link black" href="">Copy</a></button>
+        <button class="font button-snippet dim" type="button" value="Copy Snippet"><a class="black" href="">Copy</a></button>
     </div>
     {% endif %}
 </div>

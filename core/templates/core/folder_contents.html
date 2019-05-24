@@ -11,7 +11,7 @@
     {% for snippets in folder.snippets.all %}
         {% if request.user.is_authenticated and user == snippets.user %}
         <div class="mt4">
-            <div ><a class="link black detail-links dim" href="{% url 'snippet-detail' snippets.pk %}">{{snippets}}</a></div>
+            <div ><a class="black detail-links dim" href="{% url 'snippet-detail' snippets.pk %}">{{snippets}}</a></div>
             <div class="ma2">
                 {{snippets.post_content|truncatewords:15}}
             </div>
