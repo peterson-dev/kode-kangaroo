@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="http://www.peterson-dev.com">
-    <img src="static/img/roo-logo7.png" alt="Logo" width="110" height="100">
+    <img src="static/img/roo-logo7.png" alt="Logo" width="120" height="100">
   </a>
   <h3 align="center">A code snippet manager</h3>
     <p align="center">
