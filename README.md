@@ -8,7 +8,7 @@
 
 # KodeKangaroo
 
-Basic demonstration of CRUD with Django, CICD with Jenkins, e2e with Cypress.
+A demo of the basics in CRUD operations with Django, e2e with Cypress, and CICD with Jenkins.
 
 ## Built With
 - [Django](https://www.djangoproject.com/)

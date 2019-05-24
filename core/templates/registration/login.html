@@ -8,7 +8,6 @@
     <title>KodeKangaroo</title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-
     <link href="https://fonts.googleapis.com/css?family=Exo" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
@@ -20,15 +19,15 @@
 </head>
 {% load i18n %}
 {% block content %}
-
-  <div class="bg-black min-vh-100 nav_font_color">
+<div class="background-logo">
+  <div class="min-vh-100 nav_font_color">
     <div class="login-container pa3">
       <div class="tc">
         <h1 class="font f-headline lh-solid mb4 mt4">Kode<br>Kangaroo</h1>
-        <h2 class="logo-font-size font logo nav_font_color mb1 mt1">&lt;/&gt;</h2>
+        <h2 class="logo-font-size font logo mb1 mt1" style="color: #f05822">&lt;/&gt;</h2>
         <div class="body-font">
           <p class="white f3">A code snippet manager</p>
-          <form class="login-child pure-form pure-form-aligned" method="post" action="">
+          <form class="login-child pure-form pure-form-aligned" style="color: #f05822" method="post" action="">
             <div style="width: 90%;" class="pure-control-group">
             {% csrf_token %}
             {{ form.as_p }}
@@ -42,4 +41,5 @@
       </div>
     </div>
   </div>
+</div> 
 {% endblock %}
