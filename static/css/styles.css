@@ -9,7 +9,7 @@
 
 .login-container {
     margin: auto;
-    padding-top: 5rem;
+    padding-top: 11rem;
     width: 100%;
 }
 
@@ -28,11 +28,11 @@ a:active {
 .background-logo {
     width: 100%;
     height: 100%;
-    background-image: url("/static/img/roo-logo2.png"),
+    background-image: url("/static/img/roo-logo5.png"), url("/static/img/roo-logo5.png"),
         linear-gradient(to right, black, black);
-    background-repeat: no-repeat, no-repeat;
-    background-position: bottom right, left;
-    background-size: auto, auto;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+    background-position: bottom right, top left, left;
+    background-size: auto, auto, auto;
 }
 /* 
     styles above posted after 2019/5/1
