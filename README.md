@@ -1,6 +1,6 @@
 <br />
 <p align="center">
-  <a href="http://www.peterson-dev.com">
+  <a href="https://kode-kangaroo.herokuapp.com/">
     <img src="static/img/roo-logo7.png" alt="Logo" width="120" height="100">
   </a>
   <h3 align="center">KodeKangaroo</h3>
