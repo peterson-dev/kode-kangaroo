@@ -5,13 +5,13 @@ from core.models import Snippet
 class NewSnippetForm(forms.Form):
     title = forms.CharField(
         max_length=55,
-        widget=forms.TextInput(attrs={'placeholder': 'title', 'required': True}),
+        widget=forms.TextInput(attrs={'placeholder': 'title', 'class': 'form-control form-control-lg','required': True}),
         label='',
     )
     post_content = forms.CharField(
         label='',
         max_length=1000,
-        widget=forms.Textarea(attrs={'placeholder': 'add a new snippet','required': True}),
+        widget=forms.Textarea(attrs={'placeholder': 'add a new snippet', 'class': 'form-control form-control-lg','required': True}),
     )
     language = forms.ChoiceField(
         choices=Snippet.LANG_CHOICES, 
@@ -22,7 +22,7 @@ class NewSnippetForm(forms.Form):
         initial=False,
         required=False,
         label='make public',
-        widget=forms.CheckboxInput(attrs={'title': 'public?'}),
+        widget=forms.CheckboxInput(attrs={'title': 'public?', 'class': 'form-check form-check-inline'}),
     )
 
     def save(self, user, *args, **kwargs):
