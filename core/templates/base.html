@@ -20,44 +20,49 @@
     <script src="{% static 'js/main.js' %}"></script>
     <script src="https://use.fontawesome.com/3c73ccdfcf.js"></script>
     <!-- <script src="{% static 'build/bundle.js' %}"></script> -->
-
 </head>
 
 {% if request.user.is_authenticated %}
 <header class="mb0">
-        <div class="font mb0">
-            <nav class="tracked">
-                <ul class="pa3 list pl0 mt0 flex space-between flex-wrap bg-near-black nav_font_color">
-                    <li class="logo logo_font nav_font_color pa2 hover-white dib mr3"><a class="pl2 nav_font_color hover-white dib" href="{% url 'snippet_list' %}">&lt;/&gt;</a></li>
-                    <li> <a class="nav_font_color pa3 hover-white dib mr2" href="{% url 'snippet_list' %}">MyPouch <i class="fas fa-home"></i></a></li>
-                    <li><a class="nav_font_color pa3 hover-white dib mr3" href="{% url 'kommunity_list' %}">Kommunity <i class="fas fa-globe-americas"></i></a></li>
-                    <li class="ml3 mt2" style="flex-grow: 2;">
-                        <div>
-                            <button class="btn button-success hover-white" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                                Keep <i class="fas fa-plus-square"></i>
-                            </button>
-                            <div class="collapse" id="collapseExample">
-                                <div class="card card-body" style="max-width: 25rem;">
-                                    <form class="font pure-form pure-form-aligned black" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
-                                        {% csrf_token %}
-                                        <table>
-                                            {{ form.as_p }}
-                                        </table>
-                                        <input id="snippet-field" type="submit" class="font button-success pure-button hover-white"></input>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-    
-                    <li><a class="nav_font_color pt3 pb3 ml3 hover-white dib mr3" href="{% url 'snippet_list' %}" method="POST"
-                        title="Profile page">{{ request.user.username }} <i class="fas fa-user"></i></a>
-                    <span class="hover-white dib mr3">|</span></li>
-                    <li><a class="nav_font_color pt3 pb3 link hover-white dib mr3" href="{% url 'auth_logout' %}">bounce <i class="fas fa-sign-out-alt"></i></a></li>
-                </ul>
-            </nav>
+    <div class="font mb0">
+        <nav class="tracked">
+            <ul class="pa3 list pl0 mt0 flex space-between flex-wrap bg-near-black nav_font_color">
+                <li class="logo logo_font nav_font_color pa2 hover-white dib mr3"><a class="pl2 nav_font_color hover-white dib" href="{% url 'snippet_list' %}">&lt;/&gt;</a></li>
+                <li><a class="nav_font_color pa3 hover-white dib mr2" href="{% url 'snippet_list' %}">MyPouch <i class="fas fa-home"></i></a></li>
+                <li><a class="nav_font_color pa3 hover-white dib mr3" href="{% url 'kommunity_list' %}">Kommunity <i class="fas fa-globe-americas"></i></a></li>
+                <li class="ml3 mt2" style="flex-grow: 2;">
+                    <div>
+                        <button class="btn button-success hover-white" type="button" data-toggle="modal" data-target="#exampleModalCenter">
+                            Keep <i class="fas fa-plus-square"></i>
+                        </button>
+                    </div>
+                </li>
+                <li>
+                    <a class="nav_font_color pt3 pb3 ml3 hover-white dib mr3" href="{% url 'snippet_list' %}" method="POST"
+                    title="Profile page">{{ request.user.username }} <i class="fas fa-user"></i></a>
+                    <span class="hover-white dib mr3">|</span>
+                </li>
+                <li><a class="nav_font_color pt3 pb3 link hover-white dib mr3" href="{% url 'auth_logout' %}">bounce <i class="fas fa-sign-out-alt"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body" style="max-width: 30rem; margin: auto;">
+                <form class="form-group font black" id="new-snippet-form" method='POST' action="{% url 'new-snippet' %}">
+                    {% csrf_token %}
+                    <table>
+                        {{ form.as_p }}
+                    </table>
+                    <input id="snippet-field" type="submit" class="font button-success pure-button hover-white"></input>
+                </form>
+            </div>
         </div>
-    </header>
+    </div>
+</div>
 
 <body class="mt0 ">
     <div class="flex wrap mt0">
@@ -78,5 +83,4 @@
     <script>$(function () {$('[data-toggle="tooltip"]').tooltip();});</script>
     
 </body>
-
 </html>
