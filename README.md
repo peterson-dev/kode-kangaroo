@@ -5,7 +5,7 @@
   </a>
   <h3 align="center">A code snippet manager</h3>
     <p align="center">
-    <a href="kode-kangaroo.herokuapp.com">View Demo</a>
+    <a href="https://kode-kangaroo.herokuapp.com/">View Demo</a>
     ·
     <a href="https://github.com/peterson-dev/kode-kangaroo">Report Bug</a>
     </p>
