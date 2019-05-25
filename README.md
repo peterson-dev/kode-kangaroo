@@ -1,7 +1,7 @@
 <br />
 <p align="center">
   <a href="https://kode-kangaroo.herokuapp.com/">
-    <img src="static/img/roo-logo7.png" alt="Logo" width="120" height="100">
+    <img src="static/img/roo-logo8.png" alt="Logo" width="120" height="100">
   </a>
   <h3 align="center">KodeKangaroo</h3>
     <p align="center">
