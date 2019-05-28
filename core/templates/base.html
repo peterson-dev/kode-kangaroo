@@ -24,7 +24,7 @@
 {% if request.user.is_authenticated %}
 <header class="mb0">
     <div class="font mb0">
-        <nav class="tracked">
+        <nav class="w-100">
             <ul class="pa3 list pl0 mt0 flex space-between flex-wrap bg-near-black nav_font_color">
                 <li class="logo logo_font pa2 hover-white dib mr3 ml3"><a class="hover-white dib" style="color: #f05822" href="{% url 'snippet_list' %}">&lt;/&gt;</a></li>
                 <li><a class="nav_font_color pa3 hover-white dib mr0" href="{% url 'snippet_list' %}">MyPouch <i class="fas fa-home"></i></a></li>
@@ -65,14 +65,14 @@
 
 <body class="mt0 ">
     <div class="flex wrap mt0">
-        <div class="">
+        <!-- <div class="">
             {% block sidebar %}
             {% show_user_folders request.user %}
             {% endblock %}
-        </div>
+        </div> -->
         {% endif %}
 
-        <div class="w-100">
+        <div style="width: 100%; margin: auto;">
             {% block content %}{% endblock %}
         </div>
     </div>
