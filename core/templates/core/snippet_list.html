@@ -3,35 +3,31 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="accordion mb1 ml4" id="accordionExample">
-  <h2 class="mb1">
+<div class="accordion mb3 ml4" id="accordionExample">
     <button class="btn pure-button logo_font" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
       <i class="fas fa-sliders-h" data-toggle="tooltip" data-placement="left" title="filter"></i>
     </button>
-  </h2>
   <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
     <div class="card-body" style="padding: 0;">
-      <div class="mt0">
-        <form method="GET" style="font-family: 'Raleway'">
-          <table class="form-group">
-              <span style="padding: 0.5rem; margin-bottom: 2rem;">{{ filter.form.title__icontains.label_tag }}</span>
-              <span style="">{{ filter.form.title__icontains }}</span>
+      <form method="GET" style="font-family: 'Raleway'; margin-top: 1rem;">
+        <table class="form-group">
+            <span style="padding: 2rem; margin-bottom: 2rem;">{{ filter.form.title__icontains.label_tag }}</span>
+            <span style="">{{ filter.form.title__icontains }}</span>
 
-              <span style="padding: 0.5rem; margin-bottom: 2rem;">{{ filter.form.content__icontains.label_tag }}</span>
-              <span style="">{{ filter.form.content__icontains }}</span>
-    
-              <span style="padding: 0.5rem; margin-bottom: 2rem;">{{ filter.form.language.label_tag }}</span>
-              <span style="">{{ filter.form.language }}</span>
-    
-              <td><button class="font button-success pure-button hover-white ml1 mt1" type="submit">Go</button></td>
-          </table>
-        </form>
-      </div>
+            <span style="padding: 2rem; margin-bottom: 2rem;">{{ filter.form.content__icontains.label_tag }}</span>
+            <span style="">{{ filter.form.content__icontains }}</span>
+  
+            <span style="padding: 2rem; margin-bottom: 2rem;">{{ filter.form.language.label_tag }}</span>
+            <span style="">{{ filter.form.language }}</span>
+  
+            <td><button class="font button-success pure-button hover-white ml1 mt1" type="submit">Go</button></td>
+        </table>
+      </form>
     </div>
   </div>
 </div>
 
-<h3 class="font ml4 pb2 mt1">Your Pouch:</h3>
+<h3 class="font ml4 pb2" style="padding-top: 0.4rem;">Your Pouch:</h3>
 <div class="container" style="max-width: 90%; padding-right: 2px;">
   <div class="row flex-grow">
   {% for snippet in filter.qs %}
