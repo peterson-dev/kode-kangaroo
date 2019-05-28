@@ -32,9 +32,9 @@
   <div class="row flex-grow">
   {% for snippet in filter.qs %}
     {% if user == snippet.user %}
-    <div class="col-md col-md" style="padding: 0;">
+    <div class="col-md col-md" style="padding: 3px;">
       <!-- snippet card start -->
-      <div class="card mb-3" style="max-width: 42rem; margin: 0;">
+      <div class="card mb-3" style="max-width: 54rem; margin: 0;">
         <a class="detail-links body-font black hover-white" href="{% url 'snippet-detail' pk=snippet.pk %}">
           <div class="card-header" style="overflow: auto; padding: 0.2rem;">
             <div class="flex mb1 pa1" id="snippet-{{ snippet.pk }}">
