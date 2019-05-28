@@ -4,7 +4,7 @@ from django.core.validators import MaxLengthValidator
 
 class NewSnippetForm(forms.Form):
     title = forms.CharField(
-        validators=[MaxLengthValidator(150)],
+        validators=[MaxLengthValidator(150, message='Title exceeds 150 character limit')],
         widget=forms.TextInput(attrs={'placeholder': 'title', 'class': 'form-control form-control-lg','required': True}),
         label='',
     )
@@ -33,6 +33,5 @@ class NewSnippetForm(forms.Form):
                 'public': self.cleaned_data['public'],
                 }
             data.update(kwargs)
-            print(data)
             return Snippet.objects.create(user=user, **data)
         return None
