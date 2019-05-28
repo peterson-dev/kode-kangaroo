@@ -3,49 +3,42 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="accordion" id="accordionExample">
-    <div class="mb0">
+<div class="accordion mb1 ml4" id="accordionExample">
+  <h2 class="mb1">
+    <button class="btn pure-button logo_font" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <i class="fas fa-sliders-h" data-toggle="tooltip" data-placement="left" title="filter"></i>
+    </button>
+  </h2>
+  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div class="card-body" style="padding: 0;">
+      <div class="mt0">
+        <form method="GET" style="font-family: 'Raleway'">
+          <table class="form-group">
+              <span style="padding: 0.5rem; margin-bottom: 2rem;">{{ filter.form.title__icontains.label_tag }}</span>
+              <span style="">{{ filter.form.title__icontains }}</span>
 
-        <h2 class="mb1">
-          <button class="btn pure-button logo_font" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <i class="fas fa-sliders-h" data-toggle="tooltip" data-placement="left" title="filter"></i>
-          </button>
-        </h2>
-
-  
-      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-        <div class="card-body pa0">
-          <div class="mt0">
-            <form class="" method="GET" style="font-family: 'Raleway'">
-              <table style="border: none;" class="flex wrap around pure-table pure-table-horizontal">
-                <tr class="pure-form pure-form-stacked">
-                  <td style="padding: 0.5rem;">{{ filter.form.title__icontains.label_tag }}</td>
-                  <td style="padding: 0.5rem;">{{ filter.form.title__icontains }}</td>
-        
-                  <td style="padding: 0.5rem;">{{ filter.form.post_content__icontains.label_tag }}</td>
-                  <td style="padding: 0.5rem;">{{ filter.form.post_content__icontains }}</td>
-        
-                  <td style="padding: 0.5rem;">{{ filter.form.language.label_tag }}</td>
-                  <td style="padding: 0.5rem;">{{ filter.form.language }}</td>
-        
-                  <td><button class="font button-success pure-button hover-white" type="submit">Go</button></td>
-                </tr>
-              </table>
-            </form>
-          </div>
-        </div>
+              <span style="padding: 0.5rem; margin-bottom: 2rem;">{{ filter.form.post_content__icontains.label_tag }}</span>
+              <span style="">{{ filter.form.post_content__icontains }}</span>
+    
+              <span style="padding: 0.5rem; margin-bottom: 2rem;">{{ filter.form.language.label_tag }}</span>
+              <span style="">{{ filter.form.language }}</span>
+    
+              <td><button class="font button-success pure-button hover-white ml1" type="submit">Go</button></td>
+          </table>
+        </form>
       </div>
     </div>
+  </div>
 </div>
 
-<h3 class="font ml2 pb2 mt1">Your Pouch:</h3>
-<div class="container">
-  <div class="row">
+<h3 class="font ml4 pb2 mt1">Your Pouch:</h3>
+<div class="container" style="max-width: 90%; padding-right: 2px;">
+  <div class="row flex-grow">
   {% for snippet in filter.qs %}
     {% if user == snippet.user %}
     <div class="col-md col-md" style="padding: 0;">
       <!-- snippet card start -->
-      <div class="card mb-3" style="width: 35rem; margin: 0;">
+      <div class="card mb-3" style="max-width: 42rem; margin: 0;">
         <a class="detail-links body-font black hover-white" href="{% url 'snippet-detail' pk=snippet.pk %}">
           <div class="card-header" style="overflow: auto; padding: 0.2rem;">
             <div class="flex mb1 pa1" id="snippet-{{ snippet.pk }}">
