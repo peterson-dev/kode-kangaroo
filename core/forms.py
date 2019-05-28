@@ -8,7 +8,7 @@ class NewSnippetForm(forms.Form):
         widget=forms.TextInput(attrs={'placeholder': 'title', 'class': 'form-control form-control-lg','required': True}),
         label='',
     )
-    post_content = forms.CharField(
+    content = forms.CharField(
         label='',
         widget=forms.Textarea(attrs={'placeholder': 'add a new snippet', 'class': 'form-control form-control-lg','required': True}),
     )
@@ -29,7 +29,7 @@ class NewSnippetForm(forms.Form):
             data = {
                 'title': self.cleaned_data['title'], 
                 'language': self.cleaned_data['language'], 
-                'post_content': self.cleaned_data['post_content'],
+                'content': self.cleaned_data['content'],
                 'public': self.cleaned_data['public'],
                 }
             data.update(kwargs)
