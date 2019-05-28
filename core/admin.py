@@ -7,7 +7,7 @@ admin.site.register(User, UserAdmin)
 
 @admin.register(Snippet)
 class SnippetAdmin(admin.ModelAdmin):
-    list_display = ('title', 'user', 'post_content', 'source_id')
+    list_display = ('title', 'user', 'content', 'source_id')
 
 # @admin.register(Language)
 # class LanguageAdmin(admin.ModelAdmin):

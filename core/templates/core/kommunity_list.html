@@ -37,13 +37,13 @@
 
     <script src="{% static 'js/prism.js' %}"></script>
     <a class="detail-links black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">
-        <pre class="line-numbers js-snippetcontent ma2 f5 w-100 h-auto pa2"><code class=“language-{{snippet.language}}“>{{snippet.post_content}}</code></pre>
+        <pre class="line-numbers js-snippetcontent ma2 f5 w-100 h-auto pa2"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
     </a>
     
     <div class="flex space-between">
         <div style="flex-grow: 2;" class="f6 mb2">Date added: <em>{{snippet.created_at}}</em></div>
         <button class="js-copysnippet auto font button-snippet dim" style="flex-grow: 0.03; height: 32px;"
-        value="{{snippet.post_content}}">save</button>
+        value="{{snippet.content}}">save</button>
 
     <!-- <form data-snippetpk="{{ snippet.pk }}" class="copy-snippet" method='POST'
     action="{% url 'copy-snippet' pk=snippet.pk %}">

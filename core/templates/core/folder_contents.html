@@ -13,7 +13,7 @@
         <div class="mt4">
             <div ><a class="black detail-links dim" href="{% url 'snippet-detail' snippets.pk %}">{{snippets}}</a></div>
             <div class="ma2">
-                {{snippets.post_content|truncatewords:15}}
+                {{snippets.content|truncatewords:15}}
             </div>
             <div class="flex column">
                 <div class="f6 ma2">added by - {{snippets.user}} </div>
