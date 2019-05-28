@@ -1,16 +1,15 @@
 from django import forms
 from core.models import Snippet
-
+from django.core.validators import MaxLengthValidator
 
 class NewSnippetForm(forms.Form):
     title = forms.CharField(
-        max_length=55,
+        validators=[MaxLengthValidator(150, message='Title exceeds 150 character limit')],
         widget=forms.TextInput(attrs={'placeholder': 'title', 'class': 'form-control form-control-lg','required': True}),
         label='',
     )
     post_content = forms.CharField(
         label='',
-        max_length=1000,
         widget=forms.Textarea(attrs={'placeholder': 'add a new snippet', 'class': 'form-control form-control-lg','required': True}),
     )
     language = forms.ChoiceField(
@@ -34,6 +33,5 @@ class NewSnippetForm(forms.Form):
                 'public': self.cleaned_data['public'],
                 }
             data.update(kwargs)
-            print(data)
             return Snippet.objects.create(user=user, **data)
         return None
