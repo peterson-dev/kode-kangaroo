@@ -36,42 +36,51 @@
   {% for snippet in filter.qs %}
     {% if snippet.public == True %}
     <div class="col-md col-md col-md" style="padding: 3px;">
+      <!-- snippet card start -->
+      <div class="card mb-3" style="height: 19rem; max-width: 60rem; margin: 0;">
+        <a class="detail-links body-font black hover-white" href="{% url 'snippet-detail' pk=snippet.pk %}">
+          <div class="card-header" style="overflow: auto; padding: 0.2rem;">
+            <div class="flex mb1 pa1" id="snippet-{{ snippet.pk }}">
+              {{ snippet }}
+            </div>
+          </div>
+        </a>
 
-    <a class="detail-links black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">{{snippet}}</a>
-
-    <script src="{% static 'js/prism.js' %}"></script>
-    <a class="detail-links black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">
-        <pre class="line-numbers js-snippetcontent ma2 f5 w-100 h-auto pa2"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
-    </a>
-    
-    <div class="flex space-between">
-        <div style="flex-grow: 2;" class="f6 mb2">
-          <span class="f6 gray">{{snippet.get_language_display|upper}}</span>
-          <span class="gray"> ~ added on: <em>{{snippet.created_at|date:"Y-m-d, g:ia"}}</em></span>
-          {% if user != snippet.user %}
-          <span class="f6 gray ml1">
-            by: <a style="font-size: 1.2rem;" class="black detail-links dim" href="{% url 'user_snippets' snippet.user.pk %}">{{snippet.user}}</a>
-        </span>
+        <div class="card-body" style="overflow: auto; padding: 0;">
+          <script src="{% static 'js/prism.js' %}"></script>
+          <pre class="line-numbers js-snippetcontent pa2"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
         </div>
 
-        <button class="js-copysnippet auto font button-snippet dim" style="flex-grow: 0.03; height: 32px;"
-        value="{{snippet.content}}">Keep</button>
-        {% endif %}
-
+        <div class="flex card-footer text-muted">
+          <span class="gray">{{snippet.get_language_display|upper}}</span>
+          <span class="gray"> ~ added on: <em>{{snippet.created_at|date:"Y-m-d, g:ia"}}</em></span>
+          {% if user != snippet.user %}
+          <span style="flex-grow: 2;" class="f6 gray ml1">
+            by: <a class="black b detail-links dim" href="{% url 'user_snippets' snippet.user.pk %}">{{snippet.user}}</a>
+          </span>
+          <button class="js-copysnippet font button-success pure-button hover-white"
+          value="{{snippet.content}}">Keep</button>
+          {% else %}
+          <span style="flex-grow: 2;"></span>
+          <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
+            {% csrf_token %}
+            <button type='submit' class="delete-button font button dim dib" data-toggle="tooltip" data-placement="left" data-html="true" title="Are you sure you want to <b>delete?<b>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+          </form>
+          {% endif %}
+        </div>
     <!-- <form data-snippetpk="{{ snippet.pk }}" class="copy-snippet" method='POST'
     action="{% url 'copy-snippet' pk=snippet.pk %}">
     {% csrf_token %}
     <button type='submit' class="font button dim dib">copy</i></button> -->
-
   <!-- </form> -->
-    </div>  
+      </div>
+    </div>
+  {% if forloop.counter|divisibleby:3 %}
+  </div>  
+  <div class="row">
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+  </div>
 </div>
-  {% endif %}
-{% endfor %}
-</div>
-
-
-
-
-
 {% endblock %}
