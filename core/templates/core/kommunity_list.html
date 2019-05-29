@@ -31,16 +31,14 @@
 </div>
 
 <h3 class="font ml4 pb2" style="padding-top: 0.4rem;">Public Pouch:</h3>
-{% for snippet in filter.qs %}
-  {% if snippet.public == True %}
-<div class="ml5 f4" style="font-family: 'Raleway'; ">
+<div class="container" style="max-width: 90%; padding-right: 2px;">
+  <div class="row flex-grow">
+  {% for snippet in filter.qs %}
+    {% if snippet.public == True %}
+    <div class="col-md col-md col-md" style="padding: 3px;">
 
     <a class="detail-links black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">{{snippet}}</a>
-    {% if user != snippet.user %}
-    <span class="f6 gray">
-        Added by: <a class="black detail-links dim" href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a>
-    </span>
-    {% endif %}
+
     <script src="{% static 'js/prism.js' %}"></script>
     <a class="detail-links black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">
         <pre class="line-numbers js-snippetcontent ma2 f5 w-100 h-auto pa2"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
@@ -48,10 +46,14 @@
     
     <div class="flex space-between">
         <div style="flex-grow: 2;" class="f6 mb2">
-          <span class="f6 black">{{snippet.get_language_display|upper}}</span>
-          <span class=""> ~ Date added: <em>{{snippet.created_at}}</em></span>
+          <span class="f6 gray">{{snippet.get_language_display|upper}}</span>
+          <span class="gray"> ~ added on: <em>{{snippet.created_at|date:"Y-m-d, g:ia"}}</em></span>
+          {% if user != snippet.user %}
+          <span class="f6 gray ml1">
+            by: <a style="font-size: 1.2rem;" class="black detail-links dim" href="{% url 'user_snippets' snippet.user.pk %}">{{snippet.user}}</a>
+        </span>
         </div>
-        {% if user != snippet.user %}
+
         <button class="js-copysnippet auto font button-snippet dim" style="flex-grow: 0.03; height: 32px;"
         value="{{snippet.content}}">Keep</button>
         {% endif %}
