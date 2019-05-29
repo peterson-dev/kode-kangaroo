@@ -3,61 +3,84 @@
 {% load static %}
 
 {% block content %}
-<div class="ml3 mt0 pa2">
-    <form method="GET" style="font-family: 'Raleway'">
-        <tr class="flex wrap around">
-                <td>{{ filter.form.title__icontains.label_tag }}</td>
-                <td>{{ filter.form.title__icontains }}</td>
+<div class="accordion mb3 ml4" id="accordionExample">
+  <button class="btn pure-button logo_font" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+    <i class="fas fa-sliders-h" data-toggle="tooltip" data-placement="left" title="filter"></i>
+  </button>
+  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+    <div class="card-body" style="padding: 0;">
+      <form method="GET" style="font-family: 'Raleway'; margin-top: 1rem;">
+        <table class="form-group">
+            <span style="padding: 2rem; padding-right: 1rem;">{{ filter.form.title__icontains.label_tag }}</span>
+            <span style="">{{ filter.form.title__icontains }}</span>
 
-                <td>{{ filter.form.post_content__icontains.label_tag }}</td>
-                <td>{{ filter.form.post_content__icontains }}</td>
+            <span style="padding: 2rem; padding-right: 1rem;">{{ filter.form.content__icontains.label_tag }}</span>
+            <span style="">{{ filter.form.content__icontains }}</span>
 
-                <td>{{ filter.form.language.label_tag }}</td>
-                <td>{{ filter.form.language }}</td>
+            <span style="padding: 2rem; padding-right: 1rem;">{{ filter.form.language.label_tag }}</span>
+            <span style="">{{ filter.form.language }}</span>
 
-                <td>{{ filter.form.user.label_tag }}</td>
-                <td>{{ filter.form.user }}</td>
+            <span style="padding: 2rem; padding-right: 1rem;">{{ filter.form.user.label_tag }}</span>
+            <span style="">{{ filter.form.user }}</span>
 
-                <button class="font button-snippet dim ml4" type='submit'>Search</button>
-        </tr>
-    </form>
+            <td><button class="font button-success pure-button hover-white ml1 mt1" type="submit">Go</button></td>
+        </table>
+      </form>
+    </div>
+  </div>
 </div>
-<div class="ml5">
 
+<h3 class="font ml4 pb2" style="padding-top: 0.4rem;">Public Pouch:</h3>
+<div class="container" style="max-width: 90%; padding-right: 2px;">
+  <div class="row flex-grow">
+  {% for snippet in filter.qs %}
+    {% if snippet.public == True %}
+    <div class="col-md col-md col-md" style="padding: 3px;">
+      <!-- snippet card start -->
+      <div class="card mb-3" style="height: 19rem; max-width: 60rem; margin: 0;">
+        <a class="detail-links body-font black hover-white" href="{% url 'snippet-detail' pk=snippet.pk %}">
+          <div class="card-header" style="overflow: auto; padding: 0.2rem;">
+            <div class="flex mb1 pa1" id="snippet-{{ snippet.pk }}">
+              {{ snippet }}
+            </div>
+          </div>
+        </a>
 
-<h2 style="font-family: 'Raleway'; ">Public Snippets</h2>
-{% for snippet in filter.qs %}
-<div class="ml5 f4" style="font-family: 'Raleway'; ">
+        <div class="card-body" style="overflow: auto; padding: 0;">
+          <script src="{% static 'js/prism.js' %}"></script>
+          <pre class="line-numbers js-snippetcontent pa2"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
+        </div>
 
-    <a class="detail-links black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">{{snippet}}</a>
-    <span class="f6 gray">
-        Added by: <a class="black detail-links dim" href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a>
-        <span class="f6 black"> ~ {{snippet.get_language_display|upper}}</span>
-    </span>
-
-    <script src="{% static 'js/prism.js' %}"></script>
-    <a class="detail-links black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">
-        <pre class="line-numbers js-snippetcontent ma2 f5 w-100 h-auto pa2"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
-    </a>
-    
-    <div class="flex space-between">
-        <div style="flex-grow: 2;" class="f6 mb2">Date added: <em>{{snippet.created_at}}</em></div>
-        <button class="js-copysnippet auto font button-snippet dim" style="flex-grow: 0.03; height: 32px;"
-        value="{{snippet.content}}">save</button>
-
+        <div class="flex card-footer text-muted">
+          <span class="gray">{{snippet.get_language_display|upper}}</span>
+          <span class="gray"> ~ added on: <em>{{snippet.created_at|date:"Y-m-d, g:ia"}}</em></span>
+          {% if user != snippet.user %}
+          <span style="flex-grow: 2;" class="f6 gray ml1">
+            by: <a class="black b detail-links dim" href="{% url 'user_snippets' snippet.user.pk %}">{{snippet.user}}</a>
+          </span>
+          <button class="js-copysnippet font button-success pure-button hover-white"
+          value="{{snippet.content}}">Keep</button>
+          {% else %}
+          <span style="flex-grow: 2;"></span>
+          <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
+            {% csrf_token %}
+            <button type='submit' class="delete-button font button dim dib" data-toggle="tooltip" data-placement="left" data-html="true" title="Are you sure you want to <b>delete?<b>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+          </form>
+          {% endif %}
+        </div>
     <!-- <form data-snippetpk="{{ snippet.pk }}" class="copy-snippet" method='POST'
     action="{% url 'copy-snippet' pk=snippet.pk %}">
     {% csrf_token %}
     <button type='submit' class="font button dim dib">copy</i></button> -->
-
   <!-- </form> -->
-    </div>  
+      </div>
+    </div>
+  {% if forloop.counter|divisibleby:3 %}
+  </div>  
+  <div class="row">
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+  </div>
 </div>
-{% endfor %}
-</div>
-
-
-
-
-
 {% endblock %}
