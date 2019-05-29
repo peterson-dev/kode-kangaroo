@@ -27,23 +27,29 @@
 
 <h2 style="font-family: 'Raleway'; ">Public Snippets</h2>
 {% for snippet in filter.qs %}
+  {% if snippet.public == True %}
 <div class="ml5 f4" style="font-family: 'Raleway'; ">
 
     <a class="detail-links black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">{{snippet}}</a>
+    {% if user != snippet.user %}
     <span class="f6 gray">
         Added by: <a class="black detail-links dim" href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%}{% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a>
-        <span class="f6 black"> ~ {{snippet.get_language_display|upper}}</span>
     </span>
-
+    {% endif %}
     <script src="{% static 'js/prism.js' %}"></script>
     <a class="detail-links black body-font mb3" href="{% url 'snippet-detail' snippet.pk %}">
         <pre class="line-numbers js-snippetcontent ma2 f5 w-100 h-auto pa2"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
     </a>
     
     <div class="flex space-between">
-        <div style="flex-grow: 2;" class="f6 mb2">Date added: <em>{{snippet.created_at}}</em></div>
+        <div style="flex-grow: 2;" class="f6 mb2">
+          <span class="f6 black">{{snippet.get_language_display|upper}}</span>
+          <span class=""> ~ Date added: <em>{{snippet.created_at}}</em></span>
+        </div>
+        {% if user != snippet.user %}
         <button class="js-copysnippet auto font button-snippet dim" style="flex-grow: 0.03; height: 32px;"
-        value="{{snippet.content}}">save</button>
+        value="{{snippet.content}}">Keep</button>
+        {% endif %}
 
     <!-- <form data-snippetpk="{{ snippet.pk }}" class="copy-snippet" method='POST'
     action="{% url 'copy-snippet' pk=snippet.pk %}">
@@ -53,6 +59,7 @@
   <!-- </form> -->
     </div>  
 </div>
+  {% endif %}
 {% endfor %}
 </div>
 
