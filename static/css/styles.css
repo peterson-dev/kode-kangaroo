@@ -13,17 +13,6 @@
     width: 100%;
 }
 
-a:visited {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: none;
-}
-
-a:active {
-    text-decoration: none;
-}
 
 .background-logo {
     width: 100%;
@@ -34,6 +23,7 @@ a:active {
     background-position: bottom right, left;
     background-size: auto, auto;
 }
+
 /* 
     styles above posted after 2019/5/1
 */
@@ -153,10 +143,29 @@ a:active {
     100% { transform: rotate(359deg); }
 }
 
-.profile-links:hover {
-    /* background-color: #7EE905; */
-    background-color: rgb(166, 238, 83);
-    opacity: .8;
+.profile-links {
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+.profile-links:link {
+    color: rgb(111, 207, 2);
+  }
+  
+.profile-links:visited {
+    color: rgb(111, 207, 2);
+  }
+  
+.profile-links:focus, .profile-links:hover {
+    border-bottom: 1px solid;
+    border-bottom-style: double;
+  }
+  
+.profile-links:active {
+    color: #f05822;
   }
 
 .detail-links:hover {

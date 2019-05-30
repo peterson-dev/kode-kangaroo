@@ -56,7 +56,7 @@
           <span class="gray"> ~ added on: <em>{{snippet.created_at|date:"Y-m-d @g:iA"}}</em></span>
           {% if user != snippet.user %}
           <span style="flex-grow: 2;" class="f6 gray ml1">
-            by: <a class="pure-button profile-links body-font black hover-black" href="{% url 'user_snippets' snippet.user.pk %}">{{snippet.user}}</a>
+            by: <a class="profile-links body-font" href="{% url 'user_snippets' snippet.user.pk %}">{{snippet.user}}</a>
           </span>
           <button class="js-copysnippet font button-success pure-button hover-white"
           value="{{snippet.content}}">Keep</button>
