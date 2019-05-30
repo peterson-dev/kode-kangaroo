@@ -36,8 +36,8 @@
             <input style="max-width: 6.4rem;" class="button-success pure-button pure-input-1 hover-white" type="submit" value="{% trans 'Log in' %}" />
             <input type="hidden" name="next" value="{{ next }}"/>
           </form>
-          <p class="white">{% trans "Forgot your password?" %} <a class="nav_font_color hover-white dib" href="{% url 'auth_password_reset' %}">{% trans "Reset it." %}</a></p>
-          <p class="white">{% trans "Not a member?" %} <a class="nav_font_color hover-white dib" href="{% url 'registration_register' %}">{% trans "Register." %}</a></p>
+          <p class="white">{% trans "Forgot your password?" %} <a class="nav_font_color hover-white dib" style="text-decoration: none;" href="{% url 'auth_password_reset' %}">{% trans "Reset it." %}</a></p>
+          <p class="white">{% trans "Not a member?" %} <a class="nav_font_color hover-white dib" style="text-decoration: none;" href="{% url 'registration_register' %}">{% trans "Register." %}</a></p>
         </div>
       </div>
     </div>
