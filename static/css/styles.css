@@ -67,7 +67,7 @@ a:active {
 
 .delete-button {
     border: none;
-    color: red;
+    color: #f05822;
     text-align: center;
     text-decoration: none;
     font-size: 18px;
@@ -153,8 +153,15 @@ a:active {
     100% { transform: rotate(359deg); }
 }
 
+.profile-links:hover {
+    /* background-color: #7EE905; */
+    background-color: rgb(166, 238, 83);
+    opacity: .8;
+  }
+
 .detail-links:hover {
     background-color: #7EE905;
+    /* background-color: rgb(166, 238, 83); */
     opacity: .8;
   }
 

@@ -7,11 +7,14 @@
 
 <!--would like to add if statement that if logged in user matches the added by user, the link goes to their profile page, if the user does not match, then go to a lsit view of "public" posts by the added by user or a blank url or dead url.-->
 
-
+<div class="container" style="max-width: 90%; padding-right: 2px;">
 <h2 class="snippet-title font">{{snippet.title}}</h2>
-<h3 class="snippet-user body-font">Added by: <a class="black" href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%} {% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a></h3>
+{% if user != snippet.user %}
 
-<div class="pl4">
+<h4 class="snippet-user body-font">by: <a class="btn btn-light profile-links body-font black hover-black" href="{% if user == snippet.user%}{% url 'snippet_list' %} {%else%} {% url 'user_snippets' snippet.user.pk %}{%endif%}">{{snippet.user}}</a></h4>
+{% endif %}
+
+<div class="pl4 card" style="max-width: 70rem; margin: 0;">
     <script src="{% static 'js/prism.js' %}"></script>
     <pre class="line-numbers"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
 </div>
@@ -24,7 +27,7 @@
     </div>
     {% else %}
     <div class="pl4 mt3 mb3">
-        <button class="font button-snippet dim" type="button" value="Copy Snippet"><a class="black" href="">Copy</a></button>
+        <button class="btn button-success" type="button" value="Copy Snippet"><a href="" class="black  hover-white">Kopy <i class="fas fa-plus-square"></i></a></button>
     </div>
     {% endif %}
 </div>
@@ -37,8 +40,8 @@
       {% endif %}
 </div>
 <div>
-    <p class="snippet-created">Created at: {{snippet.created_at}}</p>
+    <p class="snippet-created">added on: {{snippet.created_at}}</p>
 </div>
 
-
+</div>
 {% endblock %}
