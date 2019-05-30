@@ -52,10 +52,10 @@
         </div>
 
         <div class="flex card-footer text-muted">
-          <span class="gray">{{snippet.get_language_display|upper}}</span>
-          <span class="gray"> ~ added on: <em>{{snippet.created_at|date:"Y-m-d @g:iA"}}</em></span>
+          <span class="f6 gray">{{snippet.get_language_display|upper}}</span>
+          <span class="f6 gray"> ~ added on: <em>{{snippet.created_at|date:"Y-m-d @g:iA"}}</em></span>
           {% if user != snippet.user %}
-          <span style="flex-grow: 2;" class="f6 gray ml1 mr1">
+          <span style="flex-grow: 2;" class="f6 gray ml1 mr2">
             by: <a class="profile-links body-font" href="{% url 'user_snippets' snippet.user.pk %}">{{snippet.user}}</a>
           </span>
           <button class="js-copysnippet font button-success pure-button hover-white" style="max-height: 2.5rem;" value="{{snippet.content}}">Keep</button>
