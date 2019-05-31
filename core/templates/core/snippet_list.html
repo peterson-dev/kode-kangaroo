@@ -60,7 +60,7 @@
           <span style="flex-grow: 2;" class="f6 gray">Copied: {% copyCount snippet.pk %}</span>
           <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
             {% csrf_token %}
-            <button type='submit' class="delete-button pure-button dim font hover-white" data-toggle="tooltip" data-placement="left" data-html="true" title="Are you sure you want to <b>delete?<b>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            <button type='submit' class="delete-button btn dim font hover-white" data-toggle="tooltip" data-placement="left" data-html="true" title="Are you sure you want to <b>delete?<b>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
           </form>
         </div>
 
