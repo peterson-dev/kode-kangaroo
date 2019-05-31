@@ -1,33 +1,33 @@
 /* globals fetch */
 
-const Cookies = require('js-cookie')
+// const Cookies = require('js-cookie')
 
-function query (selector) {
-  return document.querySelector(selector)
-}
+// function query (selector) {
+//   return document.querySelector(selector)
+// }
 
-function queryAll (selector) {
-  return document.querySelectorAll(selector)
-}
+// function queryAll (selector) {
+//   return document.querySelectorAll(selector)
+// }
 
-document.addEventListener('DOMContentLoaded', function () {
-  for (let form of queryAll('.delete-snippet')) {
-    form.addEventListener('submit', function (event) {
-      event.preventDefault()
-      const csrftoken = Cookies.get('csrftoken')
-      fetch(form.action, {
-        method: 'POST',
-        headers: { 'X-CSRFToken': csrftoken, 'X-Requested-With': 'XMLHttpRequest' }
-      })
-        .then(response => {
-          if (!response.ok) {
-            throw Error(response.statusText)
-          }
-          query(`#snippet-${form.dataset['snippetpk']}`).remove()
-        })
-    })
-  }
-})
+// document.addEventListener('DOMContentLoaded', function () {
+//   for (let form of queryAll('.delete-snippet')) {
+//     form.addEventListener('submit', function (event) {
+//       event.preventDefault()
+//       const csrftoken = Cookies.get('csrftoken')
+//       fetch(form.action, {
+//         method: 'POST',
+//         headers: { 'X-CSRFToken': csrftoken, 'X-Requested-With': 'XMLHttpRequest' }
+//       })
+//         .then(response => {
+//           if (!response.ok) {
+//             throw Error(response.statusText)
+//           }
+//           query(`#snippet-${form.dataset['snippetpk']}`).remove()
+//         })
+//     })
+//   }
+// })
 
 // const newSnippetForm = query('#new-snippet-form')
 // newSnippetForm.addEventListener('submit', function (event) {
