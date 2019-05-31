@@ -56,13 +56,9 @@
 }
 
 .delete-button {
-    border: none;
-    color: #f05822;
-    text-align: center;
-    text-decoration: none;
-    font-size: 18px;
-    font-family: 'Roboto', sans-serif;
-    cursor: pointer;
+    
+    background-color: #ee7d54;
+    
 }
 
 .snippet-box {
