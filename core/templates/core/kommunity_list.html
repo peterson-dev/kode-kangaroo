@@ -40,7 +40,7 @@
       <div class="card mb-3" style="height: 19rem; max-width: 60rem; margin: 0;">
         <a class="detail-links body-font black hover-white" style="text-decoration: none;" href="{% url 'snippet-detail' pk=snippet.pk %}">
           <div class="card-header" style="overflow: auto; padding: 0.2rem;">
-            <div class="flex mb1 pa1" id="snippet-{{ snippet.pk }}">
+            <div class="flex mb1 pa1" id="title-{{ snippet.pk }}">
               {{ snippet }}
             </div>
           </div>
@@ -48,7 +48,7 @@
 
         <div class="card-body" style="overflow: auto; padding: 0;">
           <script src="{% static 'js/prism.js' %}"></script>
-          <pre class="line-numbers js-snippetcontent pa2"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
+          <pre class="line-numbers js-snippetcontent pa2" id="snippet-{{ snippet.pk }}"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
         </div>
 
         <div class="flex card-footer text-muted">
@@ -58,7 +58,7 @@
           <span style="flex-grow: 2;" class="f6 gray ml1 mr2">
             by: <a class="profile-links body-font" href="{% url 'user_snippets' snippet.user.pk %}">{{snippet.user}}</a>
           </span>
-          <button class="js-copysnippet font button-success pure-button hover-white" style="max-height: 2.5rem;" value="{{snippet.content}}">Kopy <i class="fas fa-copy"></i></button>
+          <button class="clipboardjs font button-success pure-button hover-white" data-clipboard-target="#snippet-{{ snippet.pk }}" style="max-height: 2.5rem;"><i class="fas fa-clipboard"></i></button>
           {% else %}
           <span style="flex-grow: 2;"></span>
           <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">

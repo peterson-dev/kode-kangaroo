@@ -16,7 +16,7 @@
 
 <div class="pl2 pr2 card" style="max-width: 70rem; margin: 0;">
     <script src="{% static 'js/prism.js' %}"></script>
-    <pre class="line-numbers"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
+    <pre class="line-numbers" id="snippet-{{ snippet.pk }}"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
 </div>
 
 <div>
@@ -27,7 +27,7 @@
     </div>
     {% else %}
     <div class="pl4 mt3 mb3">
-        <button class="btn button-success" style="padding: 0;" type="button" value="Copy Snippet"><a href="#" class="black  hover-white" style="padding-left: 2rem; padding-right: 2rem;">Kopy <i class="fas fa-copy"></i></a></button>
+        <button class="clipboardjs btn button-success" data-clipboard-target="#snippet-{{ snippet.pk }}" style="padding: 0;" type="button" value="Copy Snippet"><a href="#" class="black hover-white" style="padding-left: 2rem; padding-right: 2rem;">Kopy <i class="fas fa-clipboard"></i></a></button>
     </div>
     {% endif %}
 </div>
