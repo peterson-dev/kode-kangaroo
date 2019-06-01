@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/prism.css' %}">
     <link rel="icon" type="image/ico" href="{% static 'img/favicon.png' %}">
-    <script src="{% static 'js/js.cookie.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
     <script src="{% static 'build/bundle.js' %}"></script>
 </head>
@@ -33,7 +32,7 @@
             {% csrf_token %}
             {{ form.as_p }}
             </div>
-            <input style="max-width: 6.4rem;" class="button-success pure-button pure-input-1 hover-white" type="submit" value="{% trans 'Log in' %}" />
+            <input id="cy-login" style="max-width: 6.4rem;" class="button-success pure-button pure-input-1 hover-white" type="submit" value="{% trans 'Log in' %}" />
             <input type="hidden" name="next" value="{{ next }}"/>
           </form>
           <p class="white">{% trans "Forgot your password?" %} <a class="nav_font_color hover-white dib" style="text-decoration: none;" href="{% url 'auth_password_reset' %}">{% trans "Reset it." %}</a></p>
