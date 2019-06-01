@@ -3,7 +3,7 @@
 {% load staticfiles %}
 
 {% block content %}
-<div class="accordion mb3 ml4" id="accordionExample">
+<div class="accordion mb3" id="accordionExample" style="margin-left: 1rem;">
   <button class="btn logo_font" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
     <i class="fas fa-sliders-h"></i>
   </button>
@@ -27,8 +27,8 @@
   </div>
 </div>
 
-<h3 class="font ml4 pb2" style="padding-top: 0.4rem;">Your Pouch:</h3>
-<div class="container" style="max-width: 90%; padding-right: 2px;">
+<h3 class="font pb2" style="padding-top: 0.4rem; margin-left: 1.75rem;">Your Pouch:</h3>
+<div class="container" style="max-width: 90%; padding-right: 1rem;">
   <div class="row flex-grow">
   {% for snippet in filter.qs %}
     {% if user == snippet.user %}
