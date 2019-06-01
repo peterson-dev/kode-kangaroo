@@ -2,12 +2,16 @@
   "private": true,
   "devDependencies": {
     "browserify": "^16.2.3",
-    "jquery": "^3.4.1",
+    "cypress": "^3.3.1",
     "watchify": "^3.11.1"
   },
   "scripts": {
     "watch": "watchify static/js/main.js --debug -v -o static/build/bundle.js",
     "build-dev": "browserify static/js/main.js --debug -o static/build/bundle.js",
-    "build": "browserify static/js/main.js -o static/build/bundle.js"
+    "build": "browserify static/js/main.js -o static/build/bundle.js",
+    "e2e": "cypress open"
+  },
+  "dependencies": {
+    "jquery": "^3.4.1"
   }
 }
