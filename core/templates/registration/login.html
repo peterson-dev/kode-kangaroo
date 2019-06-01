@@ -31,7 +31,7 @@
           <form class="login-child form-group tc" style="color: #f05822; min-width: 30rem;" method="post" action="">
             <div style="width: 100%;" class="form-control pr2">
             {% csrf_token %}
-            <style>#id_password{ margin-left: 5px; }</style>
+            <style>#id_password{ margin-right: 1.6rem; } #id_username{ margin-right: 2rem; }</style>
             {{ form.as_p }}
             </div>
             <input id="cy-login" style="max-width: 6.4rem;" class="button-success pure-button pure-input-1 hover-white" type="submit" value="{% trans 'Log in' %}" />
