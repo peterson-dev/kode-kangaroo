@@ -51,7 +51,7 @@
           <pre class="line-numbers js-snippetcontent pa2"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
         </div>
 
-        <div class="flex card-footer text-muted">
+        <div class="flex card-footer text-muted" style="padding: .5rem .75rem;">
           <span class=" gray">{{snippet.get_language_display|upper}}</span>
           <span class="mr2 ml2 f6 gray">
             {% if snippet.public == True %}
@@ -63,7 +63,7 @@
           <span style="flex-grow: 2;" class="f6 gray">Copied: {% copyCount snippet.pk %}</span>
           <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
             {% csrf_token %}
-            <button type='submit' class="delete-button btn dim font hover-white" data-toggle="tooltip" data-placement="left" data-html="true" title="Are you sure you want to <b>delete?<b>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            <button style="height: 2rem; padding-top: 2px; padding-bottom: 7px;" class="delete-button btn dim font hover-white" type="submit" data-toggle="tooltip" data-placement="left" data-html="true" title="Are you sure you want to <b>delete?<b>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
           </form>
         </div>
 

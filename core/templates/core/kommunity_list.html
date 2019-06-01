@@ -54,7 +54,7 @@
           <pre class="line-numbers js-snippetcontent pa2" id="snippet-{{ snippet.pk }}"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
         </div>
 
-        <div class="flex card-footer text-muted">
+        <div class="flex card-footer text-muted" style="padding: .5rem .75rem;">
           <span class="f6 gray">{{snippet.get_language_display|upper}}</span>
           <span class="f6 gray"> ~ added on: <em>{{snippet.created_at|date:"Y-m-d @g:iA"}}</em></span>
           {% if user != snippet.user %}
@@ -65,12 +65,12 @@
                         .foo:hover { color: white; }
                         .foo:active { color: #f05822; }
                       </style>
-          <button style="border-radius: 3px; height: 2.3rem; margin-bottom: 8px;" class="foo clipboardjs btn font button-success" data-clipboard-target="#snippet-{{ snippet.pk }}"><i class="fas fa-clipboard"></i></button>
+          <button style="border-radius: 3px; height: 2rem;" class="foo clipboardjs font button-success" data-clipboard-target="#snippet-{{ snippet.pk }}"><i class="fas fa-clipboard"></i></button>
           {% else %}
           <span style="flex-grow: 2;"></span>
           <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
             {% csrf_token %}
-            <button type='submit' class="delete-button btn dim font hover-white" data-toggle="tooltip" data-placement="left" data-html="true" title="Are you sure you want to <b>delete?<b>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+            <button style="height: 2rem; padding-top: 2px; padding-bottom: 7px;" class="delete-button btn dim font hover-white" type="submit" data-toggle="tooltip" data-placement="left" data-html="true" title="Are you sure you want to <b>delete?<b>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
           </form>
           {% endif %}
         </div>
