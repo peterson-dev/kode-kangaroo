@@ -19,8 +19,8 @@
   
             <span style="padding: 2rem; padding-right: 1rem;">{{ filter.form.language.label_tag }}</span>
             <span style="">{{ filter.form.language }}</span>
-  
-            <td><button class="font button-success pure-button hover-white ml1 mt1" type="submit">Go</button></td>
+                                <style>.foo:hover { color: white; }</style>
+            <td><button class="foo font button-success btn ml1 mt2" type="submit">Go</button></td>
         </table>
       </form>
     </div>
@@ -36,7 +36,10 @@
       <!-- snippet card start -->
       <div class="card mb-3" style="height: 19rem; max-width: 60rem; margin: 0;">
         <a class="detail-links body-font black hover-white" style="text-decoration: none;" href="{% url 'snippet-detail' pk=snippet.pk %}">
-          <div class="card-header" style="overflow: auto; padding: 0.2rem;">
+          <style>
+            .bar:hover { text-shadow: 1px 1px 2px #000000; }
+          </style>
+          <div class="card-header bar" style="overflow: auto; padding: 0.2rem;">
             <div class="flex mb1 pa1" id="snippet-{{ snippet.pk }}">
               {{ snippet }}
             </div>

@@ -22,8 +22,8 @@
 
             <span style="padding: 2rem; padding-right: 1rem;">{{ filter.form.user.label_tag }}</span>
             <span style="">{{ filter.form.user }}</span>
-
-            <td><button class="font button-success pure-button hover-white ml1 mt1" type="submit">Go</button></td>
+                                <style>.foo:hover { color: white; }</style>
+            <td><button class="foo font button-success btn ml1 mt2" type="submit">Go</button></td>
         </table>
       </form>
     </div>
@@ -39,7 +39,10 @@
       <!-- snippet card start -->
       <div class="card mb-3" style="height: 19rem; max-width: 60rem; margin: 0;">
         <a class="detail-links body-font black hover-white" style="text-decoration: none;" href="{% url 'snippet-detail' pk=snippet.pk %}">
-          <div class="card-header" style="overflow: auto; padding: 0.2rem;">
+            <style>
+              .bar:hover { text-shadow: 1px 1px 2px #000000; }
+            </style>
+          <div class="card-header bar" style="overflow: auto; padding: 0.2rem;">
             <div class="flex mb1 pa1" id="title-{{ snippet.pk }}">
               {{ snippet }}
             </div>
@@ -58,7 +61,11 @@
           <span style="flex-grow: 2;" class="f6 gray ml1 mr2">
             by: <a class="profile-links body-font" href="{% url 'user_snippets' snippet.user.pk %}">{{snippet.user}}</a>
           </span>
-          <button class="clipboardjs font button-success pure-button hover-white" data-clipboard-target="#snippet-{{ snippet.pk }}" style="max-height: 2.5rem;"><i class="fas fa-clipboard"></i></button>
+                      <style>
+                        .foo:hover { color: white; }
+                        .foo:active { color: #f05822; }
+                      </style>
+          <button style="border-radius: 3px; max-height: 2.3rem;" class="foo clipboardjs btn font button-success" data-clipboard-target="#snippet-{{ snippet.pk }}"><i class="fas fa-clipboard"></i></button>
           {% else %}
           <span style="flex-grow: 2;"></span>
           <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
