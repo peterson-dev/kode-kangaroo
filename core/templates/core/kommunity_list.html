@@ -54,7 +54,7 @@
           <pre class="line-numbers js-snippetcontent pa2" id="snippet-{{ snippet.pk }}"><code class=“language-{{snippet.language}}“>{{snippet.content}}</code></pre>
         </div>
 
-        <div class="flex card-footer text-muted" style="padding: .5rem .75rem; min-width: 2.5rem;">
+        <div class="flex card-footer text-muted" style="padding: .5rem .75rem; min-height: 2.5rem;">
           <span class="f6 gray">{{snippet.get_language_display|upper}}</span>
           <span class="f6 gray"> ~ added on: <em>{{snippet.created_at|date:"Y-m-d @g:iA"}}</em></span>
           {% if user != snippet.user %}
