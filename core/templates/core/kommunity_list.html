@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block content %}
-<div class="accordion mb3" id="accordionExample" style="margin-left: 1rem;">
+<div class="accordion mb3" id="accordionExample" style="margin-left: 1.5rem;">
   <button class="btn logo_font" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
     <i class="fas fa-sliders-h"></i>
   </button>
@@ -11,19 +11,19 @@
     <div class="card-body" style="padding: 0;">
       <form method="GET" style="font-family: 'Raleway'; margin-top: 1rem;">
         <table class="form-group">
-            <span style="padding: 2rem; padding-right: 1rem;">{{ filter.form.title__icontains.label_tag }}</span>
-            <span style="">{{ filter.form.title__icontains }}</span>
+            <span style="padding: 1rem;">{{ filter.form.title__icontains.label_tag }}</span>
+            <span>{{ filter.form.title__icontains }}</span>
 
-            <span style="padding: 2rem; padding-right: 1rem;">{{ filter.form.content__icontains.label_tag }}</span>
-            <span style="">{{ filter.form.content__icontains }}</span>
+            <span style="padding: 1rem;">{{ filter.form.content__icontains.label_tag }}</span>
+            <span>{{ filter.form.content__icontains }}</span>
 
-            <span style="padding: 2rem; padding-right: 1rem;">{{ filter.form.language.label_tag }}</span>
-            <span style="">{{ filter.form.language }}</span>
+            <span style="padding: 1rem;">{{ filter.form.language.label_tag }}</span>
+            <span>{{ filter.form.language }}</span>
 
-            <span style="padding: 2rem; padding-right: 1rem;">{{ filter.form.user.label_tag }}</span>
-            <span style="">{{ filter.form.user }}</span>
+            <span style="padding: 1rem;">{{ filter.form.user.label_tag }}</span>
+            <span>{{ filter.form.user }}</span>
                                 <style>.foo:hover { color: white; }</style>
-            <td><button class="foo font button-success btn ml1 mt2" type="submit">Go</button></td>
+            <td><button class="foo font button-success btn ml2 mt2" type="submit">Go</button></td>
         </table>
       </form>
     </div>
