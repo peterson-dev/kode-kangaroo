@@ -1,7 +1,3 @@
-.button-success {
-    background: rgb(155, 230, 69); /* this is a green */
-}
-
 .login-child {
     width: 66%;
     margin: auto;
@@ -24,10 +20,6 @@
     background-size: auto, auto;
 }
 
-/* 
-    styles above posted after 2019/5/1
-*/
-
 #cover_image_layer {
     padding: 10px;
     position: absolute;
@@ -40,6 +32,10 @@
 
 .edit {
     margin-left: 2rem;
+}
+
+.button-success {
+    background-color: #7EE905;
 }
 
 .button-snippet {
