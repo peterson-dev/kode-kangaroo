@@ -65,7 +65,7 @@
                         .foo:hover { color: white; }
                         .foo:active { color: #f05822; }
                       </style>
-          <button style="border-radius: 3px; height: 2.3rem; margin-bottom: 2px;" class="foo clipboardjs btn font button-success" data-clipboard-target="#snippet-{{ snippet.pk }}"><i class="fas fa-clipboard"></i></button>
+          <button style="border-radius: 3px; height: 2.3rem; margin-bottom: 8px;" class="foo clipboardjs btn font button-success" data-clipboard-target="#snippet-{{ snippet.pk }}"><i class="fas fa-clipboard"></i></button>
           {% else %}
           <span style="flex-grow: 2;"></span>
           <form data-snippetpk="{{ snippet.pk }}" class="delete-snippet" method='POST' action="{% url 'confirm-snippet-delete' pk=snippet.pk %}">
