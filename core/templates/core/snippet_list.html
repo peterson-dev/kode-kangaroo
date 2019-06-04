@@ -29,7 +29,7 @@
 
 <h3 class="font pb2" style="padding-top: 0.4rem; margin-left: 1.75rem;">Your Pouch:</h3>
 <div class="container" style="max-width: 90%; padding-right: 1rem;">
-  <div class="row flex-grow">
+  <div id="cy-card" class="row flex-grow">
   {% for snippet in filter.qs %}
     {% if user == snippet.user %}
     <div class="col-md col-md col-md" style="padding: 3px;">
@@ -66,8 +66,8 @@
             <button style="height: 2rem; padding-top: 2px; padding-bottom: 7px;" class="delete-button btn dim font hover-white" type="submit" data-toggle="tooltip" data-placement="left" data-html="true" title="Are you sure you want to <b>delete?<b>"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
           </form>
         </div>
-
       </div>
+      <!-- snippet card start -->
     </div>
   {% if forloop.counter|divisibleby:3 %}
   </div>
