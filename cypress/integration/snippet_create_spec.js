@@ -2,6 +2,15 @@
 
 
 describe('Create Snippet Test', function() {
+  function makeid(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
   it('creates a public test snippet by testuser1', function() {
     cy.visit('/')
       .get('#id_username').type('testuser1')
@@ -10,14 +19,16 @@ describe('Create Snippet Test', function() {
     cy.url().should('include', '/snippets/')
 
     cy.get('#cy-keep').click()
-    cy.get('#id_title').type('Cypress Test Snippet')
-      .get('#id_content').type('test\ntest\ntest\ntest')
+    var randomTitle = makeid(9)
+    cy.get('#id_title').type(randomTitle)
+      .get('#id_content').type('This\nIs\nA\nCypress\nTest\nSnippet')
       .get('#id_language').select('Javascript').should('have.value', 'js')
       .get('#id_public').check()
-    cy.pause()
+    // cy.pause()
     cy.get('#cy-keep-submit').click()
 
-    cy.get('#cy-card div:first').should('have.')
-    
+    cy.get('#cy-card div:first')
+      .find('.card-header')
+      .should('contain', randomTitle)    
   })
 })
