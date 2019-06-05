@@ -17,8 +17,10 @@ A demo in the basics of CRUD operations using Django, e2e using Cypress, and CIC
 
 ### Built With
 - [Django](https://www.djangoproject.com/)
+- [Cypress.io](https://www.cypress.io/)
 - PostgreSQL
-- prism.js 
+- [prism.js](https://prismjs.com/) 
+- [clipboard.js](https://clipboardjs.com/)
 
 ## License
 Distributed under the MIT License. See LICENSE for more information.
