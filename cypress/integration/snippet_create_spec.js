@@ -20,11 +20,19 @@ describe('Create Snippet Test', function() {
 
     cy.get('#cy-keep').click()
     var randomTitle = makeid(9)
+
+    //check that modal is shown
+    cy.get('.modal-content').should('be.visible')
+    cy.get('option:first').should('be.selected').then(($option) => {
+      expect($option).to.contain('Bash')
+    })
+    cy.get('form').find('input[type=checkbox]').should('not.be.checked')
+
     cy.get('#id_title').type(randomTitle)
       .get('#id_content').type('This\nIs\nA\nCypress\nTest\nSnippet')
       .get('#id_language').select('Javascript').should('have.value', 'js')
       .get('#id_public').check()
-    // cy.pause()
+    cy.pause()
     cy.get('#cy-keep-submit').click()
 
     cy.get('#cy-card div:first')
