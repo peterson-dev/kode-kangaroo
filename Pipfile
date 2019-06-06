@@ -9,7 +9,6 @@ prospector = "*"
 [packages]
 django = "*"
 django-registration-redux = "*"
-django-debug-toolbar = "*"
 pillow = "*"
 django-heroku = "*"
 psycopg2-binary = "*"
