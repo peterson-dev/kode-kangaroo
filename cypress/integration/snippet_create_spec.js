@@ -1,7 +1,11 @@
 /// <reference types="Cypress" />
 
 
-describe('Create Snippet Test', function() {
+describe('Create Snippet', function() {
+
+  const user = 'testuser1'
+  const pass = 'testing1234'
+
   function makeid(length) {
     var result           = '';
     var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -11,13 +15,21 @@ describe('Create Snippet Test', function() {
     }
     return result;
   }
-  it('creates a public test snippet by testuser1', function() {
-    cy.visit('/')
-      .get('#id_username').type('testuser1')
-      .get('#id_password').type('testing1234{enter}')
-    //Should be on a new URL which includes '/snippets/'
-    cy.url().should('include', '/snippets/')
 
+  it('logs in an existing user', function() {
+    cy.login(user, pass)
+    cy.url().should('include', '/snippets/')
+    cy.get('nav').contains(user)
+  })
+
+  it('tests if create snippet modal disappears on desktop upon esc key press', function() {
+    cy.get('nav').contains('Keep').click()
+    cy.get('.modal-content').should('be.visible')
+    cy.get('html').trigger('mousedown', 'topLeft')
+    cy.get('.modal-content').should('not.exist')
+  })
+
+  it('creates a public test snippet by testuser1', function() {
     cy.get('#cy-keep').click()
     var randomTitle = makeid(9)
 
@@ -34,6 +46,7 @@ describe('Create Snippet Test', function() {
       .get('#id_public').check()
     cy.pause()
     cy.get('#cy-keep-submit').click()
+    cy.log('Snippet Created')
 
     cy.get('#cy-card div:first')
       .find('.card-header')
