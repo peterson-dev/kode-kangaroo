@@ -22,12 +22,14 @@ describe('Create Snippet', function() {
     cy.get('nav').contains(user)
   })
 
-  // it('tests if create snippet modal disappears on desktop upon esc key press', function() {
-  //   cy.get('nav').contains('Keep').click()
-  //   cy.get('.modal-content').should('be.visible')
-  //   cy.get('span > .fas').dblclick()
-  //   cy.get('.modal-content').should('not.exist')
-  // })
+  it('tests if create snippet modal disappears on desktop upon esc key press', function() {
+    cy.get('nav').contains('Keep').click()
+    cy.get('.modal-content').should('be.visible')
+
+    cy.wait(500)
+    cy.get('span > .fas').click()
+    cy.get('.modal-content').should('not.be.visible')
+  })
 
   it('creates a public test snippet by testuser1', function() {
     cy.get('#cy-keep').click()
