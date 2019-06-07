@@ -22,12 +22,12 @@ describe('Create Snippet', function() {
     cy.get('nav').contains(user)
   })
 
-  it('tests if create snippet modal disappears on desktop upon esc key press', function() {
-    cy.get('nav').contains('Keep').click()
-    cy.get('.modal-content').should('be.visible')
-    cy.get('html').trigger('mousedown', 'topLeft')
-    cy.get('.modal-content').should('not.exist')
-  })
+  // it('tests if create snippet modal disappears on desktop upon esc key press', function() {
+  //   cy.get('nav').contains('Keep').click()
+  //   cy.get('.modal-content').should('be.visible')
+  //   cy.get('span > .fas').dblclick()
+  //   cy.get('.modal-content').should('not.exist')
+  // })
 
   it('creates a public test snippet by testuser1', function() {
     cy.get('#cy-keep').click()
@@ -42,7 +42,7 @@ describe('Create Snippet', function() {
 
     cy.get('#id_title').type(randomTitle)
       .get('#id_content').type('This\nIs\nA\nCypress\nTest\nSnippet')
-      .get('#id_language').select('Javascript').should('have.value', 'js')
+      .get(':nth-child(4) > #id_language').select('Javascript').should('have.value', 'js')
       .get('#id_public').check()
     cy.pause()
     cy.get('#cy-keep-submit').click()
